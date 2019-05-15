@@ -20,6 +20,7 @@ export class LoginUrlInterceptor implements HttpInterceptor {
         const copiedReq = reqCloned;
         return next.handle(copiedReq);
       }
+
       handleBodyIn(req:HttpRequest<any>, tokenToAdd, tokenName) {
 
         if (!req.url.includes("token")) {
@@ -32,11 +33,12 @@ export class LoginUrlInterceptor implements HttpInterceptor {
             const foo = {}; foo['grant_type'] = 'password';
 
             console.log(this.serialize({...req.body, ...foo}));
-            req =  req.clone({
-              body: this.serialize({...req.body, ...foo})
-            })
+            // req =  req.clone({
+            //   body: this.serialize({...req.body, ...foo})
+            // })
 
-            req = req.clone({ setHeaders: { "Content-Type": "application/x-www-form-urlencoded" } });
+            //req = req.clone({ setHeaders: { "Content-Type": "application/x-www-form-urlencoded" } });
+            req = req.clone({ setHeaders: { "Content-Type": "application/json" } });
         }
 
 

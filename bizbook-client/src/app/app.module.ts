@@ -45,9 +45,9 @@ import { AuthGuard } from './auth/auth-guard.service';
       strategies: [
         NbPasswordAuthStrategy.setup({
           name: 'email',
-          baseEndpoint: 'http://localhost:61923',
+          baseEndpoint: 'http://localhost:52894',
           login: {
-            endpoint: '/token',
+            endpoint: '/api/token',
             redirect: {
               success: '/pages',
                 failure: null,
