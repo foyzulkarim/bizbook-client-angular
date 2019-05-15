@@ -9,18 +9,19 @@ import {
   NbResetPasswordComponent,
 } from '@nebular/auth';
 
-
 import { NgxLoginComponent } from './login/login.component';
+
+import { NgxLogoutComponent } from './logout/logout.component';
+
+
+
 
 export const routes: Routes = [
   {
     path: '',
     component: NbAuthComponent,
     children: [
-      {
-        path: '',
-        component: NgxLoginComponent,
-      },
+
       {
         path: 'login',
         component: NgxLoginComponent,
@@ -31,7 +32,7 @@ export const routes: Routes = [
       },
       {
         path: 'logout',
-        component: NbLogoutComponent,
+        component: NgxLogoutComponent,
       },
       {
         path: 'request-password',
@@ -40,6 +41,10 @@ export const routes: Routes = [
       {
         path: 'reset-password',
         component: NbResetPasswordComponent,
+      },
+      {
+        path: '',
+        component: NgxLoginComponent,
       },
     ],
   },

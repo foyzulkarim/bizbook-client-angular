@@ -14,9 +14,23 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NbPasswordAuthStrategy,
+  NbAuthModule,
+  NbAuthSimpleToken
+} from '@nebular/auth';
+import { NgxAuthModule } from './auth/auth.module';
+
+import { httpInterceptorProviders } from "./auth/interceptor";
+
+import { AuthGuard } from './auth/auth-guard.service';
+;
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -26,11 +40,29 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule.forRoot(),
     ThemeModule.forRoot(),
     CoreModule.forRoot(),
+
+    NgxAuthModule.forRoot({
+      strategies: [
+        NbPasswordAuthStrategy.setup({
+          name: 'email',
+          baseEndpoint: 'http://localhost:61923',
+          login: {
+            endpoint: '/token',
+            redirect: {
+              success: '/pages',
+                failure: null,
+              }
+          },
+          token: {
+            class: NbAuthSimpleToken,
+            key: 'access_token',
+          }
+        })
+      ],
+      forms: {}
+    })
   ],
   bootstrap: [AppComponent],
-  providers: [
-    { provide: APP_BASE_HREF, useValue: '/' },
-  ],
+  providers: [AuthGuard,httpInterceptorProviders,{ provide: APP_BASE_HREF, useValue: '/' }]
 })
-export class AppModule {
-}
+export class AppModule {}
