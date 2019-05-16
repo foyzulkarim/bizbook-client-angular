@@ -13,6 +13,8 @@ import { NgxLoginComponent } from './login/login.component';
 
 import { NgxLogoutComponent } from './logout/logout.component';
 
+import { NgxRegisterComponent } from './register/register.component';
+
 
 
 
@@ -28,7 +30,7 @@ export const routes: Routes = [
       },
       {
         path: 'register',
-        component: NbRegisterComponent,
+        component: NgxRegisterComponent,
       },
       {
         path: 'logout',

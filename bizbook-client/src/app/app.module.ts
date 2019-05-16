@@ -53,6 +53,13 @@ import { AuthGuard } from './auth/auth-guard.service';
                 failure: null,
               }
           },
+          register: {
+            endpoint: '/api/Account/Register',
+            redirect: {
+              success: '/login',
+                failure: null,
+              }
+          },
           token: {
             class: NbAuthSimpleToken,
             key: 'access_token',

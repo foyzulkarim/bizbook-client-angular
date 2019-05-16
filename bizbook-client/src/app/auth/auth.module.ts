@@ -13,9 +13,8 @@ import {
 } from '@nebular/theme';
 
 import { NgxLoginComponent } from './login/login.component';
-
 import { NgxLogoutComponent } from './logout/logout.component';
-
+import { NgxRegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -33,7 +32,8 @@ import { NgxLogoutComponent } from './logout/logout.component';
   ],
   declarations: [
     NgxLoginComponent,
-    NgxLogoutComponent
+    NgxLogoutComponent,
+    NgxRegisterComponent
   ],
   exports: [ NgxLoginComponent,
     NgxLogoutComponent]
