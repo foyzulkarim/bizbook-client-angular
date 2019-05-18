@@ -7,6 +7,7 @@ import { GroupComponent } from './group/group.component';
 import { ProductEntryComponent } from './productEntry/productEntry.component';
 import { BrandEntryComponent } from './brand-entry/brand-entry.component';
 import { BrandListComponent } from './brand-list/brand-list.component';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 const COMPONENTS = [
 
@@ -25,6 +26,7 @@ const ENTRY_COMPONENTS = [
     imports: [
         ThemeModule,
         ProductRoutingModule,
+        Ng2SmartTableModule
 
     ],
     declarations: [
