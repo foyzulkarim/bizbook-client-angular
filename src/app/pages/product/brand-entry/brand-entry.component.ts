@@ -14,11 +14,12 @@ export class BrandEntryComponent implements OnInit {
   constructor(private brandService: BrandService, private router: Router) { }
 
   ngOnInit() {
+    
   }
   save() {
-    this.brandService.save(this.model);
-    alert('Save');
-    this.router.navigate(['pages/product/brandlist']);
+    // this.brandService.save(this.model);
+    // alert('Save');
+    // this.router.navigate(['pages/product/brandlist']);
   }
 
 }

@@ -24,6 +24,8 @@ import { NgxAuthModule } from './auth/auth.module';
 import { httpInterceptorProviders } from "./auth/interceptor";
 
 import { AuthGuard } from './auth/auth-guard.service';
+import { BrandService } from './_services/brand.service';
+
 ;
 
 @NgModule({
@@ -67,9 +69,9 @@ import { AuthGuard } from './auth/auth-guard.service';
         })
       ],
       forms: {}
-    })
+    }),
   ],
   bootstrap: [AppComponent],
-  providers: [AuthGuard, httpInterceptorProviders, { provide: APP_BASE_HREF, useValue: '/' }]
+  providers: [BrandService,AuthGuard, httpInterceptorProviders, { provide: APP_BASE_HREF, useValue: '/' }]
 })
 export class AppModule { }

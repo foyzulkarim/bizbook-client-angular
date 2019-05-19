@@ -1,3 +1,36 @@
 <button type="button" class="btn btn-primary" (click)="addBrnadLink()">Add Brnads</button>
 <br>
-<ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
+<form>
+    <div class="form-group form-inline">
+        Full text search: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="service.searchTerm"/>
+        <span class="ml-3" *ngIf="service.loading$ | async">Loading...</span>
+    </div>
+  
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col" sortable="Name" (sort)="onSort($event)">Name</th>
+        <th scope="col" sortable="Address" (sort)="onSort($event)">Address</th>
+        <th scope="col" sortable="Phone" (sort)="onSort($event)">Phone</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let brand of brands$ | async">
+        <td>
+          {{brand.Name}}
+        </td>
+        <td>{{brand.Address}}</td>
+        <td>{{brand.Phone}}</td>
+     
+      </tr>
+      </tbody>
+    </table>
+  
+    <div class="d-flex justify-content-between p-2">
+      <ngb-pagination
+        [collectionSize]="total$ | async" [(page)]="service.page" [pageSize]="service.pageSize">
+      </ngb-pagination>
+    
+    </div>
+  
+  </form>
