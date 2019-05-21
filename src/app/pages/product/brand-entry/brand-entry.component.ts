@@ -1,6 +1,8 @@
 import { Router } from '@angular/router';
-import { BrandService } from './../../../_services/brand.service';
-import { Brand } from './../../../_models/brand';
+import { SaveService } from '../../../services/save.service';
+import { UrlService } from '../../../services/url.service';
+
+import { Brand } from './../../../model/models';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,17 +11,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./brand-entry.component.scss']
 })
 export class BrandEntryComponent implements OnInit {
-
   model = new Brand();
-  constructor(private brandService: BrandService, private router: Router) { }
+  urlList = new UrlService();
 
-  ngOnInit() {
-    
-  }
+  constructor(
+    private saveService: SaveService,
+    private urlService: UrlService,
+    private router: Router
+  ) {}
+
+  ngOnInit() {}
   save() {
-    // this.brandService.save(this.model);
-    // alert('Save');
-    // this.router.navigate(['pages/product/brandlist']);
+    this.saveService
+      .save(this.model, this.urlService.brand + '/add')
+      .subscribe(
+        (res) => console.log('HTTP response', res),
+        (err) => console.log('HTTP Error', err)
+      );
   }
-
 }

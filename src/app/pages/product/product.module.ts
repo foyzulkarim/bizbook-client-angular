@@ -7,38 +7,25 @@ import { GroupComponent } from './group/group.component';
 import { ProductEntryComponent } from './productEntry/productEntry.component';
 import { BrandEntryComponent } from './brand-entry/brand-entry.component';
 import { BrandListComponent } from './brand-list/brand-list.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import {NgbdSortableHeader} from '../../directive/sortable.directive';
-
-
+import { NgbdSortableHeader } from '../../directive/sortable.directive';
 
 const COMPONENTS = [
-
-    ProductComponent,
-    GroupComponent,
-    ProductEntryComponent,
-    BrandEntryComponent,
-    BrandListComponent
+  ProductComponent,
+  GroupComponent,
+  ProductEntryComponent,
+  BrandEntryComponent,
+  BrandListComponent
 ];
 
-const ENTRY_COMPONENTS = [
+const DIRECTIVES = [NgbdSortableHeader];
 
-];
+const ENTRY_COMPONENTS = [];
 
 @NgModule({
-    imports: [
-        ThemeModule,
-        ProductRoutingModule,
-        NgbModule
-
-    ],
-    declarations: [
-        ...COMPONENTS,
-        NgbdSortableHeader
-    ],
-    entryComponents: [
-        ...ENTRY_COMPONENTS,
-    ],
+  imports: [ThemeModule, ProductRoutingModule, NgbModule],
+  declarations: [...COMPONENTS, ...DIRECTIVES],
+  entryComponents: [...ENTRY_COMPONENTS]
 })
-export class ProductModule { }
+export class ProductModule {}

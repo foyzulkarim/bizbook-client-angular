@@ -1,15 +1,12 @@
-import { Shop } from './../_models/shop';
+import { Shop } from './../model/models';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShopService {
-
   shops: Shop[] = [new Shop()];
-  constructor() {
-
-  }
+  constructor() {}
 
   save(shop) {
     this.shops.push(shop);
@@ -17,5 +14,4 @@ export class ShopService {
   getBrnads() {
     return this.shops;
   }
-
 }

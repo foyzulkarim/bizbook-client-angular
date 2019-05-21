@@ -21,18 +21,29 @@ import {
 } from '@nebular/auth';
 import { NgxAuthModule } from './auth/auth.module';
 
-import { httpInterceptorProviders } from "./auth/interceptor";
+import { httpInterceptorProviders } from './auth/interceptor';
 
 import { AuthGuard } from './auth/auth-guard.service';
-import { BrandService } from './_services/brand.service';
+import { BrandService } from './services/brand.service';
 
-;
+import { WebService } from './services/web.service';
+import { UrlService } from './services/url.service';
+import { SaveService } from './services/save.service';
+import { SearchService } from './services/search.service';
+import { LocalStorageService } from './services/localstorage.service';
+import { AuthService } from './services/auth.service';
+
+const SERVICES = [
+  AuthService,
+  WebService,
+  UrlService,
+  SaveService,
+  SearchService,
+  LocalStorageService
+];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -52,26 +63,32 @@ import { BrandService } from './_services/brand.service';
             endpoint: '/api/token',
             redirect: {
               success: '/pages',
-              failure: null,
+              failure: null
             }
           },
           register: {
             endpoint: '/api/Account/Register',
             redirect: {
               success: '/login',
-              failure: null,
+              failure: null
             }
           },
           token: {
             class: NbAuthSimpleToken,
-            key: 'access_token',
+            key: 'access_token'
           }
         })
       ],
       forms: {}
-    }),
+    })
   ],
   bootstrap: [AppComponent],
-  providers: [BrandService,AuthGuard, httpInterceptorProviders, { provide: APP_BASE_HREF, useValue: '/' }]
+  providers: [
+    BrandService,
+    AuthGuard,
+    ...SERVICES,
+    httpInterceptorProviders,
+    { provide: APP_BASE_HREF, useValue: '/' }
+  ]
 })
-export class AppModule { }
+export class AppModule {}

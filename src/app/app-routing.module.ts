@@ -7,23 +7,22 @@ import {
   NbLogoutComponent,
   NbRegisterComponent,
   NbRequestPasswordComponent,
-  NbResetPasswordComponent,
+  NbResetPasswordComponent
 } from '@nebular/auth';
 
 const routes: Routes = [
   { path: 'pages', loadChildren: 'app/pages/pages.module#PagesModule' },
 
   { path: '', loadChildren: 'app/auth/auth.module#NgxAuthModule' },
-  { path: '**', redirectTo: '/login' },
+  { path: '**', redirectTo: '/login' }
 ];
 
 const config: ExtraOptions = {
-  useHash: true,
+  useHash: true
 };
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, config)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}
