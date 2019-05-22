@@ -317,6 +317,14 @@ export class BaseComponent<T extends Entity> {
     window.history.back();
   }
 
+  toggleSort(property: string): void {
+    var self = this;
+    self.searchRequest.isAscending =
+      self.searchRequest.isAscending === 'false' ? 'true' : 'false';
+    self.searchRequest.orderBy = property;
+    self.search();
+  }
+
   startDate: Date;
   startDatePopUp: boolean;
   hideStartDate: boolean;

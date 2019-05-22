@@ -76,6 +76,7 @@
     "@angular/compiler-cli": "^7.2.11",
     "@angular/language-service": "7.2.11",
     "@compodoc/compodoc": "^1.1.9",
+    "@fortawesome/fontawesome-free": "^5.8.2",
     "@types/jasmine": "2.5.54",
     "@types/jasminewd2": "2.0.3",
     "@types/node": "6.0.90",

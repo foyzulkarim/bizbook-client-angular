@@ -20,7 +20,9 @@
       <th width="1">
         #
       </th>
-      <th>Name</th>
+      <th (click)="toggleSort('name')">
+        Name<span class="glyphicon glyphicon-sort"></span>
+      </th>
       <th>Address</th>
       <th>
         Phone
@@ -58,7 +60,7 @@
     </li>
     <li class="page-item" *ngIf="searchRequest.page > 2">
       <a href="javascript:void(0)" (click)="goto(searchRequest.page - 2)"
-        ><i class="font-icon font-icon-arrow-left"></i
+        ><i class="fa fa-angle-left"></i
       ></a>
     </li>
     <li class="page-item" *ngIf="searchRequest.page > 1">
@@ -86,7 +88,7 @@
       *ngIf="searchRequest.totalPage - searchRequest.page > 1"
     >
       <a href="javascript:void(0)" (click)="goto(searchRequest.page + 2)"
-        ><i class="font-icon font-icon-arrow-right"></i
+        ><i class="fa fa-angle-right"></i
       ></a>
     </li>
   </ul>
