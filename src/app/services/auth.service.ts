@@ -42,18 +42,18 @@ export class AuthService {
     return self.webService.post(self.urlService.signinUrl, data).pipe(
       tap(
         (result: any): any => {
+          console.log(result);
           self.accountInfo = new UserInfo();
-          self.accountInfo.userName = result.data.userName;
-          self.accountInfo.id = result.data.id;
-          self.accountInfo.role = result.data.role;
-          self.accountInfo.authToken = result.data.AuthToken;
-          self.accountInfo.accessToken = result.data.access_token;
+
+          self.accountInfo.name = result.name;
+          self.accountInfo.userName = result.userName;
+          self.accountInfo.id = result.id;
+          self.accountInfo.role = result.role;
+          self.accountInfo.accessToken = result.access_token;
           self.accountInfo.isAuth = true;
-          self.accountInfo.connectionId = '';
-          self.accountInfo.shopId = result.data.shopId;
-          self.accountInfo.warehouseId = result.data.warehouseId;
-          self.accountInfo.resources = JSON.parse(result.data.resources);
-          self.accountInfo.defaultRoute = result.data.defaultRoute;
+          self.accountInfo.shopId = result.shopId;
+          self.accountInfo.resources = JSON.parse(result.resources);
+          self.accountInfo.defaultRoute = result.defaultRoute;
           self.localStorageService.save('authorizationData', self.accountInfo);
         }
       )
@@ -86,10 +86,10 @@ export class AuthService {
 
   //loadMenu(): void {
   //    var self = this;
-  //    //self.UserInfo.Routes = result.data.Routes;
+  //    //self.UserInfo.Routes = result.Routes;
   //    self.web.get(self.url.sideMenuUrl).then(result => {
   //        console.log(result);
-  //        self.accountInfo.routes = result.data;
+  //        self.accountInfo.routes = result;
   //    }, error => {
   //        console.log(error);
   //    });
@@ -102,8 +102,8 @@ export class AuthService {
     return self.webService.post(self.urlService.registerUrl, request).pipe(
       tap(
         (result: any): any => {
-          var response = new RegisterResponse(true, result.data, 'Success');
-          response.userName = result.data.userName;
+          var response = new RegisterResponse(true, result, 'Success');
+          response.userName = result.userName;
           response.isRegistered = true;
         }
       )

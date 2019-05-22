@@ -13,7 +13,7 @@ export class Brand extends Entity {
   IsActive?: boolean;
 }
 
-export class Shop {
+export class Shop extends Entity {
   Name: String;
   StreetAddress: String;
   Area: String;
@@ -49,9 +49,4 @@ export class Shop {
   WcWebhookSource: String;
   WcVersion: String;
   IsActive: Boolean;
-}
-
-export class User {
-  id: number;
-  userName: string;
 }

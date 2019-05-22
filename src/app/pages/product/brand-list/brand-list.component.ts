@@ -1,35 +1,48 @@
-import { DecimalPipe } from '@angular/common';
 import { Component, QueryList, ViewChildren, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 import { SearchService } from '../../../services/search.service';
 import { UrlService } from '../../../services/url.service';
 
 import { Brand } from './../../../model/models';
 import { BrandService } from '../../../services/brand.service';
+
+import { BaseComponent } from '../../../common/base.component';
+
 import {
   NgbdSortableHeader,
   SortEvent
 } from '../../../directive/sortable.directive';
+import { SaveService } from '../../../services/save.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-brand-list',
   templateUrl: './brand-list.component.html',
   styleUrls: ['./brand-list.component.scss'],
-  providers: [BrandService]
+  providers: []
 })
-export class BrandListComponent implements OnInit {
-  brands$: Observable<Brand[]>;
-  total$: Observable<number>;
+export class BrandListComponent extends BaseComponent<Brand> implements OnInit {
+  @ViewChildren(NgbdSortableHeader) headerList: QueryList<NgbdSortableHeader>;
 
-  @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
+  headers = ['id', 'Name', 'Address', 'modified'];
 
-  constructor(private service: SearchService, private urlService: UrlService) {}
+  constructor(
+    search: SearchService,
+    save: SaveService,
+    authService: AuthService,
+    url: UrlService,
+    router: Router
+  ) {
+    super(router, url, search, save, authService, url.brand, url.brandQuery);
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.search();
+  }
 
   onSort({ column, direction }: SortEvent) {
-    this.headers.forEach((header) => {
+    this.headerList.forEach((header) => {
       if (header.sortable !== column) {
         header.direction = '';
       }

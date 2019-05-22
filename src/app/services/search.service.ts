@@ -15,7 +15,7 @@ export class SearchService {
   search(request: SearchRequest, url: string): Observable<SearchResponse> {
     return this.webService
       .post(url, request)
-      .pipe(map((res) => new SearchResponse(res.data)));
+      .pipe(map((res) => new SearchResponse(res)));
   }
 
   get(url: string): Observable<any> {

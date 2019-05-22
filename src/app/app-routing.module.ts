@@ -11,7 +11,11 @@ import {
 } from '@nebular/auth';
 
 const routes: Routes = [
-  { path: 'pages', loadChildren: 'app/pages/pages.module#PagesModule' },
+  {
+    path: 'pages',
+    canActivate: [AuthGuard],
+    loadChildren: 'app/pages/pages.module#PagesModule'
+  },
 
   { path: '', loadChildren: 'app/auth/auth.module#NgxAuthModule' },
   { path: '**', redirectTo: '/login' }

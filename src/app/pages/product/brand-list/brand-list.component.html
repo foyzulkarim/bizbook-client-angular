@@ -1,36 +1,93 @@
-<button type="button" class="btn btn-primary" (click)="addBrnadLink()">Add Brnads</button>
-<br>
-<form>
-    <div class="form-group form-inline">
-        Full text search: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="service.searchTerm"/>
-        <span class="ml-3" *ngIf="service.loading$ | async">Loading...</span>
-    </div>
-  
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th scope="col" sortable="Name" (sort)="onSort($event)">Name</th>
-        <th scope="col" sortable="Address" (sort)="onSort($event)">Address</th>
-        <th scope="col" sortable="Phone" (sort)="onSort($event)">Phone</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let brand of brands$ | async">
-        <td>
-          {{brand.Name}}
-        </td>
-        <td>{{brand.Address}}</td>
-        <td>{{brand.Phone}}</td>
-     
-      </tr>
-      </tbody>
-    </table>
-  
-    <div class="d-flex justify-content-between p-2">
-      <ngb-pagination
-        [collectionSize]="total$ | async" [(page)]="service.page" [pageSize]="service.pageSize">
-      </ngb-pagination>
-    
-    </div>
-  
+<div class="form-group form-inline">
+  <form #form="ngForm" (ngSubmit)="search()">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="searchRequest.keyword"
+      name="Name"
+      id="Name"
+      #name="ngModel"
+      required
+      placeholder="Search"
+    />
   </form>
+  <span class="ml-3" *ngIf="">Loading...</span>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="1">
+        #
+      </th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>
+        Phone
+      </th>
+      <th>Modified</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let brand of models; index as i">
+      <td>
+        {{ i + 1 }}
+      </td>
+      <td>
+        {{ brand.name }}
+      </td>
+      <td>{{ brand.address }}</td>
+      <td>{{ brand.phone }}</td>
+      <td>{{ brand.modified | date }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-between p-2">
+  <ul class="pagination">
+    <li class="page-item" *ngIf="searchRequest.page > 2">
+      <a href="javascript:void(0)" (click)="goto(1)"
+        ><i
+          class="fa fa-angle-double-left"
+          style="
+                font-weight: 600;
+                font-size: 24px;
+            "
+        ></i
+      ></a>
+    </li>
+    <li class="page-item" *ngIf="searchRequest.page > 2">
+      <a href="javascript:void(0)" (click)="goto(searchRequest.page - 2)"
+        ><i class="font-icon font-icon-arrow-left"></i
+      ></a>
+    </li>
+    <li class="page-item" *ngIf="searchRequest.page > 1">
+      <a href="javascript:void(0)" (click)="goto(searchRequest.page - 1)">{{
+        searchRequest.page - 1
+      }}</a>
+    </li>
+
+    <li class="page-item active">
+      <a href="javascript:void(0)" (click)="goto(searchRequest.page)">{{
+        searchRequest.page
+      }}</a>
+    </li>
+
+    <li
+      class="page-item"
+      *ngIf="searchRequest.totalPage - searchRequest.page > 0"
+    >
+      <a href="javascript:void(0)" (click)="goto(searchRequest.page + 1)">{{
+        searchRequest.page + 1
+      }}</a>
+    </li>
+    <li
+      class="page-item"
+      *ngIf="searchRequest.totalPage - searchRequest.page > 1"
+    >
+      <a href="javascript:void(0)" (click)="goto(searchRequest.page + 2)"
+        ><i class="font-icon font-icon-arrow-right"></i
+      ></a>
+    </li>
+  </ul>
+</div>

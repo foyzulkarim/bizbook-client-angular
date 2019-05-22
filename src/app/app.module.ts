@@ -21,7 +21,7 @@ import {
 } from '@nebular/auth';
 import { NgxAuthModule } from './auth/auth.module';
 
-import { httpInterceptorProviders } from './auth/interceptor';
+import { httpInterceptorProviders } from './interceptor';
 
 import { AuthGuard } from './auth/auth-guard.service';
 import { BrandService } from './services/brand.service';

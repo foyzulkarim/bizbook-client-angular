@@ -4,26 +4,17 @@ import { CanActivate, Router } from '@angular/router';
 import { NbAuthService } from '@nebular/auth';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { AuthService } from '../services/auth.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private authService: NbAuthService, private router: Router) {}
-
+  constructor(private authService: AuthService, private router: Router) {}
 
   canActivate() {
-    return this.authService.isAuthenticated();
-
-    // .subscribe((isAuth) => {
-    //    if(  isAuth ){
-
-    //     this.router.navigateByUrl('pages');
-    //     return true;
-
-    //    }
-    //    this.router.navigateByUrl('/login');
-    //    return false;
-
-
-    //   });
+    if (this.authService.isSignedIn()) {
+      return true;
+    }
+    this.router.navigate(['/login']);
+    return false;
   }
 }
