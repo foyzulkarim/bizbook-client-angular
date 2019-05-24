@@ -18,7 +18,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'BrandEntry',
-        link: '/pages/product/bradentry'
+        link: '/pages/product/brandentry'
       },
       {
         title: 'BrandList',

@@ -31,7 +31,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let brand of models; index as i">
+    <tr
+      *ngFor="let brand of models; index as i"
+      (click)="gotoDetails(brand.id)"
+    >
       <td>
         {{ i + 1 }}
       </td>

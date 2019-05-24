@@ -222,6 +222,8 @@ export class BaseComponent<T extends Entity> {
     var self = this;
     var onSuccess = (data: SearchResponse) => {
       self.model = data.data;
+
+      console.log(self.model);
     };
 
     var onError = (error: any) => {

@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { SaveService } from '../../../services/save.service';
 import { UrlService } from '../../../services/url.service';
 
@@ -23,10 +23,19 @@ export class BrandEntryComponent extends BaseComponent<Brand>
     save: SaveService,
     authService: AuthService,
     url: UrlService,
-    router: Router
+    router: Router,
+    private activeRoute: ActivatedRoute
   ) {
     super(router, url, search, save, authService, url.brand, url.brandQuery);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.activeRoute.params.subscribe((params) => {
+      this.isUpdateMode = false;
+      if (params['id']) {
+        this.isUpdateMode = true;
+        this.edit2(params['id']);
+      }
+    });
+  }
 }

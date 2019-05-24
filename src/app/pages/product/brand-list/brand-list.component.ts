@@ -41,18 +41,7 @@ export class BrandListComponent extends BaseComponent<Brand> implements OnInit {
     this.search();
   }
 
-  onSort({ column, direction }: SortEvent) {
-    this.headerList.forEach((header) => {
-      if (header.sortable !== column) {
-        header.direction = '';
-      }
-    });
-
-    //this.service.sortColumn = column;
-    //this.service.sortDirection = direction;
-  }
-
-  addBrnadLink() {
-    //this.router.navigate(['pages/product/bradentry']);
+  gotoDetails(id: string) {
+    this.router.navigateByUrl('/pages/product/branddetail/' + id);
   }
 }
