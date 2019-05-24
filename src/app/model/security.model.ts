@@ -15,6 +15,9 @@ export class RegisterRequest {
   firstName: string;
   lastName: string;
   phone: string;
+  shopid?: string;
+  isActive?: string;
+  roleid?: string;
 
   constructor(
     email: string,

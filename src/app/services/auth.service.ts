@@ -99,15 +99,7 @@ export class AuthService {
     var self = this;
     self.signout();
 
-    return self.webService.post(self.urlService.registerUrl, request).pipe(
-      tap(
-        (result: any): any => {
-          var response = new RegisterResponse(true, result, 'Success');
-          response.userName = result.userName;
-          response.isRegistered = true;
-        }
-      )
-    );
+    return self.webService.post(self.urlService.registerUrl, request);
   }
 
   // setDefaultPassword(data: any) : angular.IPromise<any>{
