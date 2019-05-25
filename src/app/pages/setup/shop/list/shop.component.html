@@ -23,7 +23,7 @@
       <th (click)="toggleSort('name')">
         Name<i class="fas fa-exchange-alt fa-exchange-alt"></i>
       </th>
-      <th>Address</th>
+      <th>Country</th>
       <th>
         Phone
       </th>
@@ -32,18 +32,18 @@
   </thead>
   <tbody>
     <tr
-      *ngFor="let brand of models; index as i"
-      (click)="gotoDetails(brand.id)"
+      *ngFor="let shop of models; index as i"
+      (click)="gotoDetails(shop.id)"
     >
       <td>
         {{ i + 1 }}
       </td>
       <td>
-        {{ brand.name }}
+        {{ shop.name }}
       </td>
-      <td>{{ brand.address }}</td>
-      <td>{{ brand.phone }}</td>
-      <td>{{ brand.modified | date }}</td>
+      <td>{{ shop.country }}</td>
+      <td>{{ shop.phone }}</td>
+      <td>{{ shop.modified | date }}</td>
     </tr>
   </tbody>
 </table>
