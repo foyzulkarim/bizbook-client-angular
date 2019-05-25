@@ -1,4 +1,4 @@
-import { ShopEntryComponent } from './shop-entry/shop-entry.component';
+import { ShopEntryComponent } from './shop/entry/shop-entry.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 

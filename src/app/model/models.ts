@@ -14,7 +14,6 @@ export class Brand extends Entity {
 
 export class Shop extends Entity {
   name: string;
-  nameBn: string;
   houseNo: string;
   roadNo: string;
   area: string;

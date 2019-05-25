@@ -5,8 +5,8 @@ import { ProductComponent } from './product.component';
 import { ProductRoutingModule } from './product.routing.module';
 import { GroupComponent } from './group/group.component';
 import { ProductEntryComponent } from './productEntry/productEntry.component';
-import { BrandEntryComponent } from './brand-entry/brand-entry.component';
-import { BrandListComponent } from './brand-list/brand-list.component';
+import { BrandEntryComponent } from './brand/entry/brand-entry.component';
+import { BrandListComponent } from './brand/list/brand-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NgbdSortableHeader } from '../../directive/sortable.directive';

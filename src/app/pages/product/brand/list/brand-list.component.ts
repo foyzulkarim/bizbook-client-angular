@@ -1,19 +1,16 @@
 import { Component, QueryList, ViewChildren, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { SearchService } from '../../../services/search.service';
-import { UrlService } from '../../../services/url.service';
+import { SearchService } from '../../../../services/search.service';
+import { UrlService } from '../../../../services/url.service';
 
-import { Brand } from './../../../model/models';
+import { Brand } from './../../../../model/models';
 
-import { BaseComponent } from '../../../common/base.component';
+import { BaseComponent } from '../../../../common/base.component';
 
-import {
-  NgbdSortableHeader,
-  SortEvent
-} from '../../../directive/sortable.directive';
-import { SaveService } from '../../../services/save.service';
-import { AuthService } from '../../../services/auth.service';
+
+import { SaveService } from '../../../../services/save.service';
+import { AuthService } from '../../../../services/auth.service';
 
 @Component({
   selector: 'app-brand-list',
@@ -22,7 +19,6 @@ import { AuthService } from '../../../services/auth.service';
   providers: []
 })
 export class BrandListComponent extends BaseComponent<Brand> implements OnInit {
-  @ViewChildren(NgbdSortableHeader) headerList: QueryList<NgbdSortableHeader>;
 
   headers = ['id', 'Name', 'Address', 'modified'];
 
