@@ -27,7 +27,7 @@ constructor(
   router: Router,
   private activeRoute: ActivatedRoute
 ) {
-  super(router, url, search, save, authService, url.brand, url.brandQuery);
+  super(router, url, search, save, authService, url.shop, url.shopQuery);
 }
 
 ngOnInit() {

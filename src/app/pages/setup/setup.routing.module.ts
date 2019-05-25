@@ -19,6 +19,10 @@ const routes: Routes = [{
             path: 'shopentry',
             component: ShopEntryComponent,
         },
+        {
+            path: 'shopdetail/:id',
+            component: ShopEntryComponent
+          },
 
     ],
 }];

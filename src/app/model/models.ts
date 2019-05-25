@@ -24,13 +24,13 @@ export class Shop extends Entity {
   remarks: string;
   contactPersonName: string;
   about: string;
-  expiryDate: Date;
   wcUrl: string;
   key: string;
   secret: string;
-  hasDeliveryChain: boolean;
   chalanName: string;
   receiptName: string;
+  expiryDate: Date;
+  hasDeliveryChain: boolean;
   isShowOrderNumber: boolean;
   isAutoAddToCart: boolean;
   deliveryCharge: number;

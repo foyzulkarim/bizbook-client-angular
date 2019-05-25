@@ -18,6 +18,9 @@
     // brand
     this.brand = this.inventoryBaseApi + '/Brand';
     this.brandQuery = this.inventoryBaseApi + '/BrandQuery';
+
+    this.shop = this.inventoryBaseApi + '/Shop';
+    this.shopQuery = this.inventoryBaseApi + '/ShopQuery';
   }
 
   private setLocalhost(): void {
@@ -37,4 +40,7 @@
   // brands
   brand: string;
   brandQuery: string;
+  shop: string;
+  shopQuery: string;
+  
 }
