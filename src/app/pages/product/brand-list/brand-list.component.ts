@@ -5,7 +5,6 @@ import { SearchService } from '../../../services/search.service';
 import { UrlService } from '../../../services/url.service';
 
 import { Brand } from './../../../model/models';
-import { BrandService } from '../../../services/brand.service';
 
 import { BaseComponent } from '../../../common/base.component';
 

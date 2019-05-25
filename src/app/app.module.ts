@@ -24,7 +24,6 @@ import { NgxAuthModule } from './auth/auth.module';
 import { httpInterceptorProviders } from './interceptor';
 
 import { AuthGuard } from './auth/auth-guard.service';
-import { BrandService } from './services/brand.service';
 
 import { WebService } from './services/web.service';
 import { UrlService } from './services/url.service';
@@ -84,7 +83,6 @@ const SERVICES = [
   ],
   bootstrap: [AppComponent],
   providers: [
-    BrandService,
     AuthGuard,
     ...SERVICES,
     httpInterceptorProviders,
