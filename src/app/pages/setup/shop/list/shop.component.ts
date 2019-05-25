@@ -1,5 +1,4 @@
-import { ShopService } from '../../../services/shop.service';
-import { Shop } from './../../../model/models';
+import { Shop } from './../../../../model/models';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -10,8 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ShopComponent implements OnInit {
   shops: Shop[] = [];
-  constructor(public shopService: ShopService, private router: Router) {
-    this.shops = this.shopService.getBrnads();
+  constructor( private router: Router) {
     console.log(this.shops);
   }
 

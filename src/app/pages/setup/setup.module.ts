@@ -6,7 +6,7 @@ import { ThemeModule } from '../../@theme/theme.module';
 
 import { SetupComponent } from './setup.component';
 import { SetupRoutingModule } from './setup.routing.module';
-import { ShopComponent } from './shop/shop.component';
+import { ShopComponent } from './shop/list/shop.component';
 import { ShopEntryComponent } from './shop/entry/shop-entry.component';
 
 const COMPONENTS = [

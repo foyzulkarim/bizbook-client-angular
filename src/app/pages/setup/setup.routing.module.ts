@@ -1,9 +1,10 @@
-import { ShopEntryComponent } from './shop/entry/shop-entry.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 
-import { ShopComponent } from './shop/shop.component';
+import { ShopComponent } from './shop/list/shop.component';
+import { ShopEntryComponent } from './shop/entry/shop-entry.component';
+
 import { SetupComponent } from './setup.component';
 
 const routes: Routes = [{
