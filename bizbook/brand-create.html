@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="description"
+        content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BizBook365</title>
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body class="app sidebar-mini rtl">
+    <!-- Navbar-->
+    <header class="app-header"><a class="app-header__logo" href="dashboard.html">BizBook365</a>
+        <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar"
+            aria-label="Hide Sidebar"></a>
+        <!-- Navbar Right Menu-->
+        <ul class="app-nav">
+            <!-- User Menu-->
+            <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown"><i
+                        class="fa fa-user fa-lg"></i></a>
+                <ul class="dropdown-menu settings-menu dropdown-menu-right">
+                    <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
+                    <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
+                    <li><a class="dropdown-item" href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+    <!-- Sidebar menu-->
+    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    <aside class="app-sidebar">
+        <div class="app-sidebar__user"><img class="app-sidebar__user-avatar"
+                src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" alt="User Image">
+            <div>
+                <p class="app-sidebar__user-name">Foyzul Karim</p>
+                <p class="app-sidebar__user-designation">Shop Admin</p>
+            </div>
+        </div>
+        <ul class="app-menu">
+            <li><a class="app-menu__item" href="dashboard.html"><i
+                        class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a>
+            </li>
+
+
+            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i
+                        class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Brand</span><i
+                        class="treeview-indicator fa fa-angle-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a class="treeview-item" href="brand-list.html">Brand List</a></li>
+                    <li><a class="treeview-item active" href="brand-create.html">Add New Brand</a></li>
+                </ul>
+            </li>
+
+
+        </ul>
+    </aside>
+
+    <main class="app-content">
+        <div class="app-title">
+            <div>
+                <h1><i class="fa fa-laptop"></i> Brand</h1>
+                <p>Product brand panel</p>
+            </div>
+            <ul class="app-breadcrumb breadcrumb">
+                <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+                <li class="breadcrumb-item">Brand</li>
+                <li class="breadcrumb-item active"><a href="#">Add New Brand</a></li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tile">
+                    <h3 class="tile-title">Add New Brand</h3>
+                    <hr>
+                    <form action="">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Name</label>
+                                    <input class="form-control" type="text" placeholder="Enter Name">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Address</label>
+                                    <textarea class="form-control" rows="5" placeholder="Enter Address"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Phone</label>
+                                    <input class="form-control" type="tel" placeholder="Enter Phone">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Remarks</label>
+                                    <input class="form-control" type="text" placeholder="Enter Remarks">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Contact Person Name</label>
+                                    <input class="form-control" type="text" placeholder="Enter Contact Person Name">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Country</label>
+                                    <input class="form-control" type="text" placeholder="Enter Country">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Made In Country</label>
+                                    <input class="form-control" type="text" placeholder="Enter Made In Country">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Email</label>
+                                    <input class="form-control" type="email" placeholder="Enter Email">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Brand Code</label>
+                                    <input class="form-control" type="text" placeholder="Enter Brand Code">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="tile-footer">
+                                    <button class="btn btn-primary" type="button">Publish</button>
+                                    <button class="btn btn-info" type="button">Back</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- Essential javascripts for application to work-->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <!-- The javascript plugin to display page loading on top-->
+    <script src="js/plugins/pace.min.js"></script>
+    <!-- Page specific javascripts-->
+    <script type="text/javascript" src="js/plugins/chart.js"></script>
+</body>
+
+</html>
