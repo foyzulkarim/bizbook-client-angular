@@ -1,0 +1,176 @@
+<div class="app-title">
+  <div>
+    <h1><i class="fa fa-laptop"></i> Brand</h1>
+    <p>Product brand panel</p>
+  </div>
+  <ul class="app-breadcrumb breadcrumb">
+    <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+    <li class="breadcrumb-item">Brand</li>
+    <li class="breadcrumb-item active"><a href="#">Brand List</a></li>
+  </ul>
+</div>
+
+<div class="form-group form-inline">
+  <form #form="ngForm" (ngSubmit)="search()">
+    <input type="text" class="form-control" [(ngModel)]="searchRequest.keyword" name="Name" id="Name" #name="ngModel"
+      required placeholder="Search" />
+  </form>
+  <span class="ml-3" *ngIf="">Loading...</span>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="tile">
+      <h3 class="tile-title">Brand List</h3>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name <i class="fa fa-sort-alpha-asc"></i></th>
+              <th>Address</th>
+              <th>Phone Number</th>
+              <th>Modified on</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Khaas Food</td>
+              <td>Road - 3 House - 10 Gate - 8 Block - K Halishahar H/E Chittagong.</td>
+              <td>01786096428</td>
+              <td>Dec 4, 2018</td>
+              <td><span class="pull-right"><button class="btn btn-sm btn-info">Edit</button>
+                  <button class="btn btn-sm btn-danger">Delete</button></span></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Khaas Food</td>
+              <td>Road - 3 House - 10 Gate - 8 Block - K Halishahar H/E Chittagong.</td>
+              <td>01786096428</td>
+              <td>Dec 4, 2018</td>
+              <td><span class="pull-right"><button class="btn btn-sm btn-info">Edit</button>
+                  <button class="btn btn-sm btn-danger">Delete</button></span></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Khaas Food</td>
+              <td>Road - 3 House - 10 Gate - 8 Block - K Halishahar H/E Chittagong.</td>
+              <td>01786096428</td>
+              <td>Dec 4, 2018</td>
+              <td><span class="pull-right"><button class="btn btn-sm btn-info">Edit</button>
+                  <button class="btn btn-sm btn-danger">Delete</button></span></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Khaas Food</td>
+              <td>Road - 3 House - 10 Gate - 8 Block - K Halishahar H/E Chittagong.</td>
+              <td>01786096428</td>
+              <td>Dec 4, 2018</td>
+              <td><span class="pull-right"><button class="btn btn-sm btn-info">Edit</button>
+                  <button class="btn btn-sm btn-danger">Delete</button></span></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Khaas Food</td>
+              <td>Road - 3 House - 10 Gate - 8 Block - K Halishahar H/E Chittagong.</td>
+              <td>01786096428</td>
+              <td>Dec 4, 2018</td>
+              <td><span class="pull-right"><button class="btn btn-sm btn-info">Edit</button>
+                  <button class="btn btn-sm btn-danger">Delete</button></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-6">
+          <button class="btn btn-primary" type="button">Load All 254</button>
+          <button class="btn btn-primary" type="button">Export to CSV</button>
+          <button class="btn btn-primary" type="button">Excel</button>
+        </div>
+        <div class="col-md-6">
+          <div class="pull-right">
+            <span class="mb-1 d-block">Showing 1 to 10 of 254 rows</span>
+            <ul class="pagination">
+              <li class="page-item disabled"><a class="page-link" href="#">«</a></li>
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li>
+              <li class="page-item"><a class="page-link" href="#">»</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="1">
+        #
+      </th>
+      <th (click)="toggleSort('name')">
+        Name<i class="fas fa-exchange-alt fa-exchange-alt"></i>
+      </th>
+      <th>Address</th>
+      <th>
+        Phone
+      </th>
+      <th>Modified</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let brand of models; index as i" (click)="gotoDetails(brand.id)">
+      <td>
+        {{ i + 1 }}
+      </td>
+      <td>
+        {{ brand.name }}
+      </td>
+      <td>{{ brand.address }}</td>
+      <td>{{ brand.phone }}</td>
+      <td>{{ brand.modified | date }}</td>
+    </tr>
+  </tbody>
+</table>
+<div class="pull-right pagination" [hidden]="searchRequest.page == -1">
+  <div class="pull-left pagination-detail">
+    <span class="pagination-info">Showing {{ (searchRequest.page - 1) * 10 + 1 }} to
+      {{ searchRequest.page * 10 }}
+      <span ng-hide="totalCount==0"> of {{ totalCount }} rows</span></span>
+  </div>
+  <ul class="pagination">
+    <li class="page-item" *ngIf="searchRequest.page > 2">
+      <a href="javascript:void(0)" (click)="goto(1)"><i class="fa fa-angle-double-left"></i></a>
+    </li>
+    <li class="page-item" *ngIf="searchRequest.page > 2">
+      <a href="javascript:void(0)" (click)="goto(searchRequest.page - 2)"><i class="fa fa-angle-left"></i></a>
+    </li>
+    <li class="page-item" *ngIf="searchRequest.page > 1">
+      <a href="javascript:void(0)" (click)="goto(searchRequest.page - 1)">{{
+        searchRequest.page - 1
+      }}</a>
+    </li>
+
+    <li class="page-item active">
+      <a href="javascript:void(0)" (click)="goto(searchRequest.page)">{{
+        searchRequest.page
+      }}</a>
+    </li>
+
+    <li class="page-item" *ngIf="searchRequest.totalPage - searchRequest.page > 0">
+      <a href="javascript:void(0)" (click)="goto(searchRequest.page + 1)">{{
+        searchRequest.page + 1
+      }}</a>
+    </li>
+    <li class="page-item" *ngIf="searchRequest.totalPage - searchRequest.page > 1">
+      <a href="javascript:void(0)" (click)="goto(searchRequest.page + 2)"><i class="fa fa-angle-right"></i></a>
+    </li>
+  </ul>
+</div> -->

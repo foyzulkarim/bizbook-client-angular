@@ -1,0 +1,139 @@
+<form #form="ngForm">
+  <div class="form-group">
+    <label for="Name">Name</label>
+    <input type="text" class="form-control" [(ngModel)]="model.name" name="Name" id="Name" #name="ngModel" required
+      placeholder="Name" />
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+      <div *ngIf="name.errors.required" class="error-message">
+        Name is required.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="houseNo">House No</label>
+    <input type="text" [(ngModel)]="model.houseNo" #houseNo="ngModel" name="houseNo" class="form-control" id="houseNo"
+      placeholder="houseNo" />
+  </div>
+  <div class="form-group">
+    <label for="roadNo">Road No</label>
+    <input type="text" [(ngModel)]="model.roadNo" #roadNo="ngModel" name="roadNo" class="form-control" id="roadNo"
+      placeholder="roadNo" />
+  </div>
+  <div class="form-group">
+    <label for="area">Area</label>
+    <input type="text" [(ngModel)]="model.area" #area="ngModel" name="area" class="form-control" id="area"
+      placeholder="area" />
+  </div>
+  <div class="form-group">
+    <label for="thana">Thana</label>
+    <input type="text" [(ngModel)]="model.thana" #thana="ngModel" name="thana" class="form-control" id="thana"
+      placeholder="thana" />
+  </div>
+
+  <div class="form-group">
+    <label for="area">District</label>
+    <input type="text" [(ngModel)]="model.district" #district="ngModel" name="district" class="form-control"
+      id="district" placeholder="district" />
+  </div>
+
+  <div class="form-group">
+    <label for="country">Country</label>
+    <input type="text" [(ngModel)]="model.country" #country="ngModel" name="country" class="form-control" id="country"
+      placeholder="country" />
+  </div>
+
+  <div class="form-group">
+    <label for="country">Phone</label>
+    <input type="text" [(ngModel)]="model.phone" #phone="ngModel" name="phone" class="form-control" id="phone"
+      placeholder="phone" />
+  </div>
+
+
+  <div class="form-group">
+    <label for="country">remarks</label>
+    <input type="text" [(ngModel)]="model.remarks" #remarks="ngModel" name="remarks" class="form-control" id="remarks"
+      placeholder="remarks" />
+  </div>
+
+
+  <div class="form-group">
+    <label for="country">ContactPersonName</label>
+    <input type="text" [(ngModel)]="model.contactPersonName" #contactPersonName="ngModel" name="contactPersonName"
+      class="form-control" id="contactPersonName" placeholder="contactPersonName" />
+  </div>
+
+  <div class="form-group">
+    <label for="country">about</label>
+    <input type="text" [(ngModel)]="model.about" #about="ngModel" name="about" class="form-control" id="about"
+      placeholder="about" />
+  </div>
+
+
+  <div class="form-group">
+    <label for="country">wcUrl</label>
+    <input type="text" [(ngModel)]="model.wcUrl" #wcUrl="ngModel" name="wcUrl" class="form-control" id="wcUrl"
+      placeholder="wcUrl" />
+  </div>
+
+  <div class="form-group">
+    <label for="country">key</label>
+    <input type="text" [(ngModel)]="model.key" #key="ngModel" name="key" class="form-control" id="key"
+      placeholder="key" />
+  </div>
+
+
+  <div class="form-group">
+    <label for="country">secret</label>
+    <input type="text" [(ngModel)]="model.secret" #secret="ngModel" name="secret" class="form-control" id="secret"
+      placeholder="secret" />
+  </div>
+
+  <div class="form-group">
+    <label for="country">chalanName</label>
+    <input type="text" [(ngModel)]="model.chalanName" #chalanName="ngModel" name="chalanName" class="form-control"
+      id="chalanName" placeholder="chalanName" />
+  </div>
+
+
+  <div class="form-group">
+    <label for="country">Receipt Name</label>
+    <input type="text" [(ngModel)]="model.receiptName" #receiptName="ngModel" name="receiptName" class="form-control"
+      id="receiptName" placeholder="receiptName" />
+  </div>
+
+
+
+  <div class="form-group">
+    <label for="country">Expiry Date</label>
+    <input type="date" [(ngModel)]="model.expiryDate" #expiryDate="ngModel" name="expiryDate" class="form-control"
+      id="expiryDate" placeholder="expiryDate" />
+  </div>
+
+  <div class="form-group">
+    <label for="country">Delivery Chain</label>
+    <input type="checkbox" [(ngModel)]="model.hasDeliveryChain" #hasDeliveryChain="ngModel" name="hasDeliveryChain"
+      class="form-control" id="hasDeliveryChain" placeholder="hasDeliveryChain" />
+  </div>
+
+  <div class="form-group">
+    <label for="country">Show Order Number</label>
+    <input type="checkbox" [(ngModel)]="model.isShowOrderNumber" #isShowOrderNumber="ngModel" name="isShowOrderNumber"
+      class="form-control" id="isShowOrderNumber" placeholder="isShowOrderNumber" />
+  </div>
+
+  <div class="form-group">
+    <label for="country">Auto Add To Cart</label>
+    <input type="checkbox" [(ngModel)]="model.isAutoAddToCart" #isAutoAddToCart="ngModel" name="isAutoAddToCart"
+      class="form-control" id="isAutoAddToCart" placeholder="isAutoAddToCart" />
+  </div>
+
+  <div class="form-group">
+    <label for="country">Delivery Charge</label>
+    <input type="text" [(ngModel)]="model.deliveryCharge" #deliveryCharge="ngModel" name="deliveryCharge"
+      class="form-control" id="deliveryCharge" placeholder="deliveryCharge" />
+  </div>
+
+  <button [disabled]="form.invalid" type="submit" class="btn btn-danger" (click)="save()">
+    Submit
+  </button>
+</form>
