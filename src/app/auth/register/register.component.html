@@ -1,0 +1,51 @@
+<h1 id="title" class="title">Register</h1>
+
+<form #loginForm="ngForm" (ngSubmit)="login()" class="login-form">
+  <section class="material-half-bg">
+    <div class="cover"></div>
+  </section>
+  <section class="login-content">
+    <div class="logo">
+      <h1>BizBook365</h1>
+    </div>
+    <div class="login-box">
+      <div class="login-form">
+        <h3 class="login-head">
+          <i class="fa fa-lg fa-fw fa-user"></i>SIGN IN
+        </h3>
+        <div class="form-group">
+          <label class="control-label">EMAIL</label>
+          <input
+            class="form-control"
+            type="text"
+            name="email"
+            placeholder="email"
+            required
+            [(ngModel)]="model.email"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">PASSWORD</label>
+          <input
+            class="form-control mr-sm-2"
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+            [(ngModel)]="model.password"
+          />
+        </div>
+
+        <div class="form-group btn-container">
+          <button class="btn btn-primary btn-block">
+            <i class="fa fa-sign-in fa-lg fa-fw" (click)="login()"></i>SIGN IN
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</form>
+
+<section class="another-action" aria-label="Sign in">
+  Already have an account? <a class="text-link" routerLink="../login">Log in</a>
+</section>

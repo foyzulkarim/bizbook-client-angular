@@ -1,48 +1,25 @@
-import { AppComponent } from './app.component';
-import { BrandListComponent } from './pages/product/brand/list/brand-list.component';
-import { BrandEntryComponent } from './pages/product/brand/entry/brand-entry.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { TestComponent } from './pages/test/test.component';
+import { ExtraOptions, Routes, RouterModule } from '@angular/router';
+
+import { AuthGuard } from './auth/auth-guard.service';
 
 const routes: Routes = [
   {
-
-    path: '', component: DashboardComponent,
+    path: 'pages',
+    canActivate: [AuthGuard],
+    loadChildren: '../app/pages/pages.module#PagesModule'
   },
-  {
-    path: '',
-    children: [
 
-      {
-        path: 'brandentry',
-        component: BrandEntryComponent
-      },
-      {
-        path: 'branddetail/:id',
-        component: BrandEntryComponent
-      },
-      {
-        path: 'brandlist',
-        component: BrandListComponent
-      },
-      {
-        path: 'test',
-        component: TestComponent
-      }
-    ],
-
-  }
-  ,
-
-  { path: '**', redirectTo: '', pathMatch: 'full' }
-
-
+  { path: '', loadChildren: '../app/auth/auth.module#NgxAuthModule' },
+  { path: '**', redirectTo: '/login' }
 ];
+
+const config: ExtraOptions = {
+  useHash: false
+};
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

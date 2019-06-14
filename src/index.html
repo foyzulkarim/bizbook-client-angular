@@ -1,47 +1,53 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Bizbooks</title>
+    <base href="/" />
 
-<head>
-  <meta charset="utf-8">
-  <title>Bizbooks</title>
-  <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
+  <body>
+    <app-root></app-root>
+  </body>
+  <script>
+    (function() {
+      'use strict';
 
-<body>
-  <app-root></app-root>
-</body>
-<script>
-  (function () {
-    "use strict";
+      var treeviewMenu = $('.app-menu');
 
-    var treeviewMenu = $('.app-menu');
+      // Toggle Sidebar
+      $('[data-toggle="sidebar"]').click(function(event) {
+        event.preventDefault();
+        $('.app').toggleClass('sidenav-toggled');
+      });
 
-    // Toggle Sidebar
-    $('[data-toggle="sidebar"]').click(function (event) {
-      event.preventDefault();
-      $('.app').toggleClass('sidenav-toggled');
-    });
+      // Activate sidebar treeview toggle
+      $("[data-toggle='treeview']").click(function(event) {
+        event.preventDefault();
+        if (
+          !$(this)
+            .parent()
+            .hasClass('is-expanded')
+        ) {
+          treeviewMenu
+            .find("[data-toggle='treeview']")
+            .parent()
+            .removeClass('is-expanded');
+        }
+        $(this)
+          .parent()
+          .toggleClass('is-expanded');
+      });
 
-    // Activate sidebar treeview toggle
-    $("[data-toggle='treeview']").click(function (event) {
-      event.preventDefault();
-      if (!$(this).parent().hasClass('is-expanded')) {
-        treeviewMenu.find("[data-toggle='treeview']").parent().removeClass('is-expanded');
-      }
-      $(this).parent().toggleClass('is-expanded');
-    });
+      // Set initial active toggle
+      $("[data-toggle='treeview.'].is-expanded")
+        .parent()
+        .toggleClass('is-expanded');
 
-    // Set initial active toggle
-    $("[data-toggle='treeview.'].is-expanded").parent().toggleClass('is-expanded');
-
-    //Activate bootstrip tooltips
-    $("[data-toggle='tooltip']").tooltip();
-
-  })();
-
-</script>
-
+      //Activate bootstrip tooltips
+      $("[data-toggle='tooltip']").tooltip();
+    })();
+  </script>
 </html>

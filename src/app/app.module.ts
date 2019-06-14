@@ -1,68 +1,56 @@
-import { SaveService } from './services/save.service';
+import { APP_BASE_HREF } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+
+import { httpInterceptorProviders } from './interceptor';
+
+import { AuthGuard } from './auth/auth-guard.service';
 
 import { WebService } from './services/web.service';
-import { ShopEntryComponent } from './pages/setup/shop/entry/shop-entry.component';
-import { BrandListComponent } from './pages/product/brand/list/brand-list.component';
+import { UrlService } from './services/url.service';
+import { SaveService } from './services/save.service';
+import { SearchService } from './services/search.service';
+import { LocalStorageService } from './services/localstorage.service';
+import { AuthService } from './services/auth.service';
 
-import { LoginComponent } from './pages/login/login.component';
-
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-
-import { BrandEntryComponent } from './pages/product/brand/entry/brand-entry.component';
-import { ShopComponent } from './pages/setup/shop/list/shop.component';
-import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './pages/header/header.component';
 import { SidebarComponent } from './pages/sidebar/sidebar.component';
-import { TestComponent } from './pages/test/test.component';
-import { SearchService } from './services/search.service';
 
-import { HttpClientModule } from '@angular/common/http';
-import { UrlService } from './services/url.service';
-import { JwtModule } from '@auth0/angular-jwt';
-export function tokenGetter() {
-  return localStorage.getItem('token');
-}
+import { NgxAuthModule } from './auth/auth.module';
+
+const SERVICES = [
+  AuthService,
+  WebService,
+  UrlService,
+  SaveService,
+  SearchService,
+  LocalStorageService
+];
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    DashboardComponent,
-    BrandEntryComponent,
-    BrandListComponent,
-    ShopEntryComponent,
-    ShopComponent,
-    HeaderComponent,
-    SidebarComponent,
-    TestComponent,
-
-
-
-  ],
+  declarations: [AppComponent, HeaderComponent, SidebarComponent],
   imports: [
     BrowserModule,
+    CommonModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        whitelistedDomains: ['localhost:52894'],
-        blacklistedRoutes: ['localhost:52894/api/auth']
-      }
-    })
-
+    NgxAuthModule,
+    FormsModule
   ],
+  bootstrap: [AppComponent],
   providers: [
-    SearchService,
-    WebService,
-    SaveService,
-    UrlService
-  ],
-  bootstrap: [AppComponent]
+    AuthGuard,
+    ...SERVICES,
+    httpInterceptorProviders,
+    { provide: APP_BASE_HREF, useValue: '/' }
+  ]
 })
-export class AppModule { }
+export class AppModule {}

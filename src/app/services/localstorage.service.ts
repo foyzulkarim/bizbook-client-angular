@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class LocalStorageService {
   storage: StorageType = StorageType.localStorage;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   private getStorageKey(key: any): string {
     let storageKey = LocalStorageKeys[key]

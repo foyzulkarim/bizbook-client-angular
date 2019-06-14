@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
@@ -29,7 +29,7 @@ export class AuthService {
     private webService: WebService,
     private urlService: UrlService,
     private localStorageService: LocalStorageService
-  ) { }
+  ) {}
 
   signin(request: SigninRequest): Observable<any> {
     var self = this;

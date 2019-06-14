@@ -21,6 +21,12 @@
 
     this.shop = this.inventoryBaseApi + '/Shop';
     this.shopQuery = this.inventoryBaseApi + '/ShopQuery';
+
+    // product group
+    this.productGroup = this.inventoryBaseApi + '/ProductGroup';
+    this.productGroupQuery = this.inventoryBaseApi + '/ProductGroupQuery';
+    this.productGroupQueryData = this.productGroupQuery + '/Data';
+    this.productGroupQueryReport = this.productGroupQuery + '/Report';
   }
 
   private setLocalhost(): void {
@@ -43,4 +49,8 @@
   shop: string;
   shopQuery: string;
 
+  productGroup: string;
+  productGroupQuery: string;
+  productGroupQueryData: string;
+  productGroupQueryReport: string;
 }

@@ -35,3 +35,8 @@ export class Shop extends Entity {
   isAutoAddToCart: boolean;
   deliveryCharge: number;
 }
+
+export class ProductGroup extends Entity {
+  name: string;
+  isActive?: boolean;
+}
