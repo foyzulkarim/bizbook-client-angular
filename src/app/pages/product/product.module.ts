@@ -8,13 +8,15 @@ import { GroupComponent } from './group/group.component';
 import { ProductEntryComponent } from './productEntry/productEntry.component';
 import { BrandEntryComponent } from './brand/entry/brand-entry.component';
 import { BrandListComponent } from './brand/list/brand-list.component';
+import { PaginationComponent } from '../../component/pagination/pagination.component';
 
 const COMPONENTS = [
   ProductComponent,
   GroupComponent,
   ProductEntryComponent,
   BrandEntryComponent,
-  BrandListComponent
+  BrandListComponent,
+  PaginationComponent
 ];
 
 const ENTRY_COMPONENTS = [];

@@ -73,73 +73,12 @@
         </table>
       </div>
       <hr />
-      <div class="row">
-        <div class="col-md-6">
-          <button class="btn btn-primary" type="button">Load All 254</button>
-          <button class="btn btn-primary" type="button">Export to CSV</button>
-          <button class="btn btn-primary" type="button">Excel</button>
-        </div>
-        <div class="col-md-6">
-          <div class="pull-right">
-            <span class="mb-1 d-block"
-              >Showing {{ (searchRequest.page - 1) * 10 + 1 }} to
-              {{ searchRequest.page * 10 }}
-              of {{ totalCount }} rows</span
-            >
-
-            <ul class="pagination">
-              <li class="page-item" *ngIf="searchRequest.page > 2">
-                <a href="javascript:void(0)" (click)="goto(1)"
-                  ><i class="fa fa-angle-double-left"></i
-                ></a>
-              </li>
-              <li class="page-item" *ngIf="searchRequest.page > 2">
-                <a
-                  href="javascript:void(0)"
-                  (click)="goto(searchRequest.page - 2)"
-                  ><i class="fa fa-angle-left"></i
-                ></a>
-              </li>
-              <li class="page-item" *ngIf="searchRequest.page > 1">
-                <a
-                  href="javascript:void(0)"
-                  (click)="goto(searchRequest.page - 1)"
-                  >{{ searchRequest.page - 1 }}</a
-                >
-              </li>
-
-              <li class="page-item active">
-                <a
-                  href="javascript:void(0)"
-                  (click)="goto(searchRequest.page)"
-                  >{{ searchRequest.page }}</a
-                >
-              </li>
-
-              <li
-                class="page-item"
-                *ngIf="searchRequest.totalPage - searchRequest.page > 0"
-              >
-                <a
-                  href="javascript:void(0)"
-                  (click)="goto(searchRequest.page + 1)"
-                  >{{ searchRequest.page + 1 }}</a
-                >
-              </li>
-              <li
-                class="page-item"
-                *ngIf="searchRequest.totalPage - searchRequest.page > 1"
-              >
-                <a
-                  href="javascript:void(0)"
-                  (click)="goto(searchRequest.page + 2)"
-                  ><i class="fa fa-angle-right"></i
-                ></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <pagination
+        [searchRequest]="searchRequest"
+        [totalCount]="totalCount"
+        (pageNate)="goto($event)"
+        (searchPage)="search()"
+      ></pagination>
     </div>
   </div>
 </div>

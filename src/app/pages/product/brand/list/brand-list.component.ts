@@ -8,7 +8,6 @@ import { Brand } from './../../../../model/models';
 
 import { BaseComponent } from '../../../../common/base.component';
 
-
 import { SaveService } from '../../../../services/save.service';
 import { AuthService } from '../../../../services/auth.service';
 
@@ -19,7 +18,6 @@ import { AuthService } from '../../../../services/auth.service';
   providers: []
 })
 export class BrandListComponent extends BaseComponent<Brand> implements OnInit {
-
   headers = ['id', 'Name', 'Address', 'modified'];
 
   constructor(

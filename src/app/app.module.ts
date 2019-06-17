@@ -20,8 +20,8 @@ import { SearchService } from './services/search.service';
 import { LocalStorageService } from './services/localstorage.service';
 import { AuthService } from './services/auth.service';
 
-import { HeaderComponent } from './pages/header/header.component';
-import { SidebarComponent } from './pages/sidebar/sidebar.component';
+import { HeaderComponent } from './component/header/header.component';
+import { SidebarComponent } from './component/sidebar/sidebar.component';
 
 import { NgxAuthModule } from './auth/auth.module';
 
