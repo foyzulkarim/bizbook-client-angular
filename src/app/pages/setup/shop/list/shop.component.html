@@ -31,10 +31,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr
-      *ngFor="let shop of models; index as i"
-      (click)="gotoDetails(shop.id)"
-    >
+    <tr *ngFor="let shop of models; index as i" (click)="gotoDetails(shop.id)">
       <td>
         {{ i + 1 }}
       </td>
@@ -47,52 +44,10 @@
     </tr>
   </tbody>
 </table>
-<div class="pull-right pagination" [hidden]="searchRequest.page == -1">
-  <div class="pull-left pagination-detail">
-    <span class="pagination-info"
-      >Showing {{ (searchRequest.page - 1) * 10 + 1 }} to
-      {{ searchRequest.page * 10 }}
-      <span ng-hide="totalCount==0"> of {{ totalCount }} rows</span></span
-    >
-  </div>
-  <ul class="pagination">
-    <li class="page-item" *ngIf="searchRequest.page > 2">
-      <a href="javascript:void(0)" (click)="goto(1)"
-        ><i class="fa fa-angle-double-left"></i
-      ></a>
-    </li>
-    <li class="page-item" *ngIf="searchRequest.page > 2">
-      <a href="javascript:void(0)" (click)="goto(searchRequest.page - 2)"
-        ><i class="fa fa-angle-left"></i
-      ></a>
-    </li>
-    <li class="page-item" *ngIf="searchRequest.page > 1">
-      <a href="javascript:void(0)" (click)="goto(searchRequest.page - 1)">{{
-        searchRequest.page - 1
-      }}</a>
-    </li>
-
-    <li class="page-item active">
-      <a href="javascript:void(0)" (click)="goto(searchRequest.page)">{{
-        searchRequest.page
-      }}</a>
-    </li>
-
-    <li
-      class="page-item"
-      *ngIf="searchRequest.totalPage - searchRequest.page > 0"
-    >
-      <a href="javascript:void(0)" (click)="goto(searchRequest.page + 1)">{{
-        searchRequest.page + 1
-      }}</a>
-    </li>
-    <li
-      class="page-item"
-      *ngIf="searchRequest.totalPage - searchRequest.page > 1"
-    >
-      <a href="javascript:void(0)" (click)="goto(searchRequest.page + 2)"
-        ><i class="fa fa-angle-right"></i
-      ></a>
-    </li>
-  </ul>
-</div>
+<hr />
+<pagination
+  [searchRequest]="searchRequest"
+  [totalCount]="totalCount"
+  (pageNate)="goto($event)"
+  (searchPage)="search()"
+></pagination>
