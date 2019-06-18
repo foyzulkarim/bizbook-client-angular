@@ -39,7 +39,7 @@ export class SaveService {
     data.modified = new Date().toDateString();
     data.modifiedBy = self.auth.accountInfo.userName;
     data.shopId = data.shopId != null ? data.shopId : '1';
-    return this.webService
+    return self.webService
       .put(url, data)
       .pipe(map((res) => new BaseResponse(true, res, 'Success')));
   }

@@ -13,11 +13,8 @@ import { AuthService } from '../../../../services/auth.service';
   templateUrl: './brand-entry.component.html',
   styleUrls: ['./brand-entry.component.scss']
 })
-export class BrandEntryComponent extends BaseComponent<Brand>
-  implements OnInit {
-  model = new Brand();
-  urlList = new UrlService();
-
+export class BrandEntryComponent extends BaseComponent<Brand> implements OnInit {
+ 
   constructor(
     search: SearchService,
     save: SaveService,
