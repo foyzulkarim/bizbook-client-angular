@@ -1,0 +1,106 @@
+<div class="fixed-table-pagination" style="display: block;">
+  <div class="pull-left pagination-detail">
+    <input type="button" class="btn btn-info" />
+    <button class="btn btn-default btn-info">
+      > Export to CSV
+    </button>
+    <button class="btn btn-default btn-info">
+      Excel
+    </button>
+    <button class="btn btn-default btn-info">
+      Manage Columns
+    </button>
+  </div>
+  <div class="pull-right pagination" [hidden]="searchRequest.page != -1">
+    <div class="pull-left pagination-detail">
+      <span class="pagination-info">Showing {{ totalCount }} rows</span>
+      <input
+        type="button"
+        class="btn btn-block"
+        value="Reset"
+        (click)="searchRequest.page = 1; search()"
+      />
+    </div>
+  </div>
+  <div class="pull-right pagination" [hidden]="searchRequest.page == -1">
+    <div class="pull-left pagination-detail">
+      <span class="pagination-info"
+        >Showing {{ (searchRequest.page - 1) * 10 + 1 }} to
+        {{ searchRequest.page * 10 }}
+        <span [hidden]="totalCount == 0"> of {{ totalCount }} rows</span></span
+      >
+    </div>
+    <ul class="pagination">
+      <li class="page-pre" *ngIf="searchRequest.page > 2">
+        <a href="javascript:void(0)" (click)="goto(1)"
+          ><i
+            class="fa fa-angle-double-left"
+            style="
+                    font-weight: 600;
+                    font-size: 24px;
+                "
+          ></i
+        ></a>
+      </li>
+      <li class="page-pre" *ngIf="searchRequest.page > 2">
+        <a href="javascript:void(0)" (click)="goto(searchRequest.page - 2)"
+          ><i class="font-icon font-icon-arrow-left"></i
+        ></a>
+      </li>
+      <li class="page-number" *ngIf="searchRequest.page > 1">
+        <a href="javascript:void(0)" (click)="goto(searchRequest.page - 1)">{{
+          searchRequest.page - 1
+        }}</a>
+      </li>
+
+      <li class="page-number active">
+        <a href="javascript:void(0)" (click)="goto(searchRequest.page)">{{
+          searchRequest.page
+        }}</a>
+      </li>
+
+      <li
+        class="page-number"
+        *ngIf="searchRequest.totalPage - searchRequest.page > 0"
+      >
+        <a href="javascript:void(0)" (click)="goto(searchRequest.page + 1)">{{
+          searchRequest.page + 1
+        }}</a>
+      </li>
+      <li
+        class="page-next"
+        *ngIf="searchRequest.totalPage - searchRequest.page > 1"
+      >
+        <a href="javascript:void(0)" (click)="goto(searchRequest.page + 2)"
+          ><i class="font-icon font-icon-arrow-right"></i
+        ></a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="fixed-table-pagination" [hidden]="!displayKeys">
+  <div class="container">
+    <div class="form-group">
+      <button
+        class="btn btn-default btn-success"
+        (click)="updateKeys(); displayKeys = false"
+      >
+        Save and Close
+      </button>
+    </div>
+  </div>
+  <div class="container">
+    <!--<ul class="list-group">
+            <li class="list-group-item" ng-repeat="k in keys">{{k.key}}</li><input type="checkbox" ng-model="k.value" class="form-check-input" />
+        </ul>-->
+    <!-- <div class="form-check border-default" ng-repeat="k in keys">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        ng-model="k.value"
+        id="{{ k.key }}"
+      />
+      <label class="form-check-label" for="{{ k.key }}">{{ k.key }}</label>
+    </div> -->
+  </div>
+</div>

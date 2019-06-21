@@ -1,0 +1,84 @@
+<div class="app-title">
+  <div>
+    <h1><i class="fa fa-laptop"></i> Brand</h1>
+    <p>Product brand panel</p>
+  </div>
+  <ul class="app-breadcrumb breadcrumb">
+    <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+    <li class="breadcrumb-item">Brand</li>
+    <li class="breadcrumb-item active"><a href="#">Brand List</a></li>
+  </ul>
+</div>
+
+<div class="form-group form-inline">
+  <form #form="ngForm" (ngSubmit)="search()">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="searchRequest.keyword"
+      name="Name"
+      id="Name"
+      #name="ngModel"
+      required
+      placeholder="Search"
+    />
+  </form>
+  <span class="ml-3" *ngIf="">Loading...</span>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="tile">
+      <h3 class="tile-title">Brand List</h3>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>
+                #
+              </th>
+              <th (click)="toggleSort('name')">
+                Name <i class="fa fa-sort-alpha-asc"></i>
+              </th>
+              <th>Address</th>
+              <th>
+                Phone
+              </th>
+              <th>Modified</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let brand of models; index as i"
+              (click)="gotoDetails(brand.id)"
+            >
+              <td>
+                {{ i + 1 }}
+              </td>
+              <td>
+                {{ brand.name }}
+              </td>
+              <td>{{ brand.address }}</td>
+              <td>{{ brand.phone }}</td>
+              <td>{{ brand.modified | date }}</td>
+              <td>
+                <span class="pull-right"
+                  ><button class="btn btn-sm btn-info">Edit</button>
+                  <button class="btn btn-sm btn-danger">Delete</button></span
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <hr />
+      <pagination
+        [searchRequest]="searchRequest"
+        [totalCount]="totalCount"
+        (pageNate)="goto($event)"
+        (searchPage)="search()"
+      ></pagination>
+    </div>
+  </div>
+</div>

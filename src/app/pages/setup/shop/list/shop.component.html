@@ -1,0 +1,53 @@
+<div class="form-group form-inline">
+  <form #form="ngForm" (ngSubmit)="search()">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="searchRequest.keyword"
+      name="Name"
+      id="Name"
+      #name="ngModel"
+      required
+      placeholder="Search"
+    />
+  </form>
+  <span class="ml-3" *ngIf="">Loading...</span>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="1">
+        #
+      </th>
+      <th (click)="toggleSort('name')">
+        Name<i class="fas fa-exchange-alt fa-exchange-alt"></i>
+      </th>
+      <th>Country</th>
+      <th>
+        Phone
+      </th>
+      <th>Modified</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let shop of models; index as i" (click)="gotoDetails(shop.id)">
+      <td>
+        {{ i + 1 }}
+      </td>
+      <td>
+        {{ shop.name }}
+      </td>
+      <td>{{ shop.country }}</td>
+      <td>{{ shop.phone }}</td>
+      <td>{{ shop.modified | date }}</td>
+    </tr>
+  </tbody>
+</table>
+<hr />
+<pagination
+  [searchRequest]="searchRequest"
+  [totalCount]="totalCount"
+  (pageNate)="goto($event)"
+  (searchPage)="search()"
+></pagination>
