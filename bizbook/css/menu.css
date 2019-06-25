@@ -1,0 +1,83 @@
+.multilevel_nav a,
+.multilevel_nav a:hover {
+	text-decoration: none;
+}
+
+[hidden] {
+	display: none;
+	visibility: hidden;
+}
+
+.multilevel_nav a,
+.multilevel_nav label {
+	display: block;
+	padding: 10px 15px;
+	margin-bottom: 0;
+	color: #fff;
+	transition: all 0.25s ease-in;
+	border-left: 3px solid transparent;
+}
+.multilevel_nav a:focus,
+.multilevel_nav a:hover,
+.multilevel_nav label:focus,
+.multilevel_nav label:hover,
+.multilevel_nav .active {
+	color: #fff;
+	background: #0d1214;
+	border-left: 3px solid #009688;
+}
+
+.multilevel_nav label {
+	cursor: pointer;
+}
+
+.multilevel_nav_list {
+	padding: 0;
+}
+.multilevel_nav_list input[type="checkbox"]:checked + label + ul {
+	/* reset the height when checkbox is checked */
+	max-height: 1000px;
+}
+  
+/**
+* Rotating chevron icon
+*/
+.multilevel_nav label > span {
+	float: right;
+	transition: -webkit-transform 0.65s ease;
+	transition: transform 0.65s ease;
+	transition: transform 0.65s ease, -webkit-transform 0.65s ease;
+}
+  
+.multilevel_nav_list input[type="checkbox"]:checked + label > span {
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+
+.group-list a,
+.group-list label {
+	padding-left: 30px;
+}
+
+.sub-group-list a,
+.sub-group-list label {
+	padding-left: 50px;
+}
+
+.sub-sub-group-list a,
+.sub-sub-group-list label {
+	padding-left: 70px;
+}
+
+.group-list,
+.sub-group-list,
+.sub-sub-group-list {
+	padding: 0;	
+	height: 100%;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.5s ease-in-out;
+}
+
+
+

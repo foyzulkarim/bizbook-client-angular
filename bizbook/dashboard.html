@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BizBook365</title>
     <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="css/menu.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css"
@@ -44,23 +45,75 @@
                 <p class="app-sidebar__user-designation">Shop Admin</p>
             </div>
         </div>
-        <ul class="app-menu">
-            <li><a class="app-menu__item" href="dashboard.html"><i class="app-menu__icon fa fa-dashboard"></i><span
-                        class="app-menu__label">Dashboard</span></a>
-            </li>
 
-
-            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i
-                        class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Brand</span><i
-                        class="treeview-indicator fa fa-angle-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a class="treeview-item active" href="brand-list.html">Brand List</a></li>
-                    <li><a class="treeview-item" href="brand-create.html">Add New Brand</a></li>
-                </ul>
-            </li>
-
-
-        </ul>
+        <nav class="multilevel_nav" role="navigation">
+            <ul class="multilevel_nav_list">
+                <li><a href="#" class="active"><i class="app-menu__icon fa fa-dashboard"></i>Dashboard</a></li>
+                <li>
+                    <input id="group-1" type="checkbox" hidden />
+                    <label for="group-1"><span class="fa fa-angle-right"></span><i class="app-menu__icon fa fa-tasks"></i>Setup</label>
+                    <ul class="group-list">
+                        <li>
+                            <input id="settings" type="checkbox" hidden />
+                            <label for="settings"><span class="fa fa-angle-right"></span>Settings</label>
+                            <ul class="sub-group-list">
+                                <li><a href="#">My Shop</a></li>
+                                <li><a href="#">Config</a></li>
+                                <!-- Another level of menu -->
+                                <!-- <li>
+                                    <input id="sub-sub-group-1" type="checkbox" hidden />
+                                    <label for="sub-sub-group-1"><span class="fa fa-angle-right"></span> Third
+                                        level</label>
+                                    <ul class="sub-sub-group-list">
+                                        <li><a href="#">3rd level nav item</a></li>
+                                        <li><a href="#">3rd level nav item</a></li>
+                                        <li><a href="#">3rd level nav item</a></li>
+                                    </ul>
+                                </li> -->
+                            </ul>
+                        </li>
+                        <li>
+                            <input id="system-user" type="checkbox" hidden />
+                            <label for="system-user"><span class="fa fa-angle-right"></span>System User</label>
+                            <ul class="sub-group-list">
+                                <li><a href="#">New</a></li>
+                                <li><a href="#">List</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <input id="operation" type="checkbox" hidden />
+                    <label for="operation"><span class="fa fa-angle-right"></span><i class="app-menu__icon fa fa-briefcase"></i>Operation</label>
+                    <ul class="group-list">
+                        <li>
+                            <input id="purchase" type="checkbox" hidden />
+                            <label for="purchase"><span class="fa fa-angle-right"></span>Purchase</label>
+                            <ul class="sub-group-list">
+                                <li><a href="#">New</a></li>
+                                <li><a href="#">List</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <input id="sale" type="checkbox" hidden />
+                            <label for="sale"><span class="fa fa-angle-right"></span>Sale</label>
+                            <ul class="sub-group-list">
+                                <li><a href="#">New</a></li>
+                                <li><a href="#">List</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <input id="report" type="checkbox" hidden />
+                    <label for="report"><span class="fa fa-angle-right"></span><i class="app-menu__icon fa fa-file-text-o"></i>Report</label>
+                    <ul class="group-list">
+                        <li><a href="#">Sales Individual Report</a></li>
+                        <li><a href="#">Daily Sales Overview Report</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
     </aside>
 
     <main class="app-content">
