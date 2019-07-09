@@ -1,0 +1,51 @@
+<form #form="ngForm">
+  <div class="app-title">
+    <div>
+      <h1><i class="fa fa-laptop"></i> Group</h1>
+      <p>Product Group panel</p>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+      <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+      <li class="breadcrumb-item">Group</li>
+      <li class="breadcrumb-item active"><a href="#">Add New</a></li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="tile">
+        <h3 class="tile-title">Add New</h3>
+        <hr />
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Name</label>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Enter Name"
+                [(ngModel)]="model.name"
+                name="Name"
+                id="Name"
+                #name="ngModel"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="tile-footer">
+              <button
+                class="btn btn-primary"
+                [disabled]="form.invalid"
+                (click)="save()"
+                type="button"
+              >
+                Publish
+              </button>
+              <button class="btn btn-info" type="button">Back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

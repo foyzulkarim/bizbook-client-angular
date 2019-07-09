@@ -4,16 +4,16 @@ import { CommonModule } from '@angular/common';
 
 import { ProductComponent } from './product.component';
 import { ProductRoutingModule } from './product.routing.module';
-import { GroupComponent } from './group/group.component';
-import { ProductEntryComponent } from './productEntry/productEntry.component';
+import { ProductGroupListComponent } from './group/list/product-group-list.component';
+import { ProductGroupEntryComponent } from './group/entry/product-group-entry.component';
 import { BrandEntryComponent } from './brand/entry/brand-entry.component';
 import { BrandListComponent } from './brand/list/brand-list.component';
 import { PaginationComponent } from '../../component/pagination/pagination.component';
 
 const COMPONENTS = [
   ProductComponent,
-  GroupComponent,
-  ProductEntryComponent,
+  ProductGroupListComponent,
+  ProductGroupEntryComponent,
   BrandEntryComponent,
   BrandListComponent,
   PaginationComponent
