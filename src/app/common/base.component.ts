@@ -238,13 +238,19 @@ export class BaseComponent<T extends Entity> {
     self.searchService.search(searchRequest, url).subscribe(onSuccess, onError);
   }
 
-  save(): void {
+  save(param?: any): void {
     var self = this;
 
     if (self.isUpdateMode) self.update();
     else {
       var successCallback = (response: BaseResponse): void => {
         self.activate();
+
+        if (param) {
+          console.log(param);
+          //self.router.navigate([param]);
+          self.router.navigateByUrl(param);
+        }
       };
       var errorCallback = (error: any): void => {
         console.log(error);
@@ -262,6 +268,7 @@ export class BaseComponent<T extends Entity> {
   update(): void {
     var self = this;
     var successCallback = (response: BaseResponse): void => {
+      console.log(response);
       self.activate();
       self.back();
     };
