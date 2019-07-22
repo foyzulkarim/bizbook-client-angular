@@ -47,17 +47,17 @@
           </thead>
           <tbody>
             <tr
-              *ngFor="let brand of models; index as i"
-              (click)="gotoDetails(brand.id)"
+              *ngFor="let model of models; index as i"
+              (click)="gotoDetails(model.id)"
             >
               <td>
                 {{ i + 1 }}
               </td>
               <td>
-                {{ brand.name }}
+                {{ model.name }}
               </td>
 
-              <td>{{ brand.modified | date }}</td>
+              <td>{{ model.modified | date }}</td>
               <td>
                 <span class="pull-right"
                   ><button class="btn btn-sm btn-info">Edit</button>
