@@ -41,15 +41,12 @@
                 Name <i class="fa fa-sort-alpha-asc"></i>
               </th>
 
-              <th>Modified</th>
+              <th>State</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr
-              *ngFor="let model of models; index as i"
-              (click)="gotoDetails(model.id)"
-            >
+            <tr *ngFor="let model of models; index as i">
               <td>
                 {{ i + 1 }}
               </td>
@@ -57,7 +54,20 @@
                 {{ model.name }}
               </td>
 
-              <td>{{ model.modified | date }}</td>
+              <td>
+                <label [hidden]="!model.isActive">Active</label>
+                <label [hidden]="model.isActive">Deactived</label>
+                <input
+                  type="checkbox"
+                  [(ngModel)]="model.isActive"
+                  (change)="update2(model)"
+                />
+                <label
+                  class="label-success"
+                  [hidden]="model.message?.length <= 0"
+                  >Updated</label
+                >
+              </td>
               <td>
                 <span class="pull-right"
                   ><button class="btn btn-sm btn-info">Edit</button>
