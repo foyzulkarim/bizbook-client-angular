@@ -24,6 +24,7 @@ import { HeaderComponent } from './component/header/header.component';
 import { SidebarComponent } from './component/sidebar/sidebar.component';
 
 import { NgxAuthModule } from './auth/auth.module';
+import { ComponentModule } from './component/component.module';
 
 const SERVICES = [
   AuthService,
@@ -43,7 +44,8 @@ const SERVICES = [
     HttpClientModule,
     AppRoutingModule,
     NgxAuthModule,
-    FormsModule
+    FormsModule,
+    ComponentModule
   ],
   bootstrap: [AppComponent],
   providers: [

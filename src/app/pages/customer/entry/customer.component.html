@@ -1,0 +1,227 @@
+<form #form="ngForm">
+  <div class="app-title">
+    <div>
+      <h1><i class="fa fa-laptop"></i> Customer</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="tile">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="col-sm-2 form-control-label"
+                >Membership Card No:</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="MembershipCardNo"
+                  [(ngModel)]="model.membershipCardNo"
+                  required="required"
+                />
+              </div>
+              <div class="col-sm-1">
+                <button
+                  type="button"
+                  class="btn btn-default pull-left"
+                  (click)="getBarcode()"
+                >
+                  <span class="glyphicon glyphicon-asterisk"></span>
+                </button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">Name</label>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Enter Name"
+                [(ngModel)]="model.name"
+                name="Name"
+                id="Name"
+                #name="ngModel"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label class="control-label">Phone</label>
+              <input
+                class="form-control"
+                [(ngModel)]="model.phone"
+                #address="ngModel"
+                name="phone"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label class="control-label">Email</label>
+              <input
+                class="form-control"
+                [(ngModel)]="model.email"
+                name="email"
+                id="email"
+                #email="ngModel"
+                required
+                type="email"
+              />
+            </div>
+            <div class="form-group">
+              <label class="control-label">National Id :</label>
+              <input
+                class="form-control"
+                class="form-control"
+                [(ngModel)]="model.nationalId"
+                name="NationalId"
+                id="NationalId"
+                type="text"
+              />
+            </div>
+            <div class="form-group" [hidden]="!isUpdateMode">
+              <label class="col-sm-2 form-control-label">Select Image :</label>
+              <div class="col-sm-8">
+                <input
+                  type="file"
+                  class="form-control "
+                  name="Image"
+                  [(ngModel)]="customerImage"
+                  custom-on-change
+                />
+              </div>
+              <div class="col-sm-2">
+                <input
+                  type="button"
+                  class="btn btn-default"
+                  (click)="uploadImage('customerImage', 'profile')"
+                  value="Upload"
+                />
+              </div>
+            </div>
+            <div class="form-group row" [hidden]="!isUpdateMode">
+              <img class="col-sm-12" [src]="customerProfileImageUrl" />
+            </div>
+
+            <div class="form-group" [hidden]="!isUpdateMode">
+              <label class="col-sm-2 form-control-label"
+                >Select NID Image 1:</label
+              >
+              <div class="col-sm-8">
+                <input
+                  type="file"
+                  class="form-control "
+                  name="Image"
+                  [(ngModel)]="customerNid1Image"
+                  custom-on-change
+                />
+              </div>
+              <div class="col-sm-2">
+                <input
+                  type="button"
+                  class="btn btn-default"
+                  (click)="uploadImage('customerNid1Image', 'nid1')"
+                  value="Upload"
+                />
+              </div>
+            </div>
+            <div class="form-group row" [hidden]="!isUpdateMode">
+              <img class="col-sm-12" [src]="customerNid1ImageUrl" />
+            </div>
+
+            <div class="form-group row" [hidden]="!isUpdateMode">
+              <label class="col-sm-2 form-control-label"
+                >Select NID Image 2:</label
+              >
+              <div class="col-sm-8">
+                <input
+                  type="file"
+                  class="form-control "
+                  name="Image"
+                  [(ngModel)]="customerNid2Image"
+                />
+              </div>
+              <div class="col-sm-2">
+                <input
+                  type="button"
+                  class="btn btn-default"
+                  (click)="uploadImage('customerNid2Image', 'nid2')"
+                  value="Upload"
+                />
+              </div>
+            </div>
+            <div class="form-group row" [hidden]="!isUpdateMode">
+              <img class="col-sm-12" [src]="customerNid2ImageUrl" />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Occupation</label>
+              <input
+                class="form-control"
+                class="form-control"
+                [(ngModel)]="model.occupation"
+                name="occupation"
+                type="text"
+              />
+            </div>
+            <div class="form-group">
+              <label class="control-label">Company</label>
+              <input
+                class="form-control"
+                [(ngModel)]="model.company"
+                name="company"
+                id="company"
+                type="text"
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="control-label">Remarks</label>
+              <input
+                class="form-control"
+                type="text"
+                [(ngModel)]="model.remarks"
+                name="remarks"
+                id="remarks"
+              />
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 form-control-label">IsActive</label>
+              <div class="col-sm-10">
+                <input
+                  type="checkbox"
+                  id="isActive"
+                  name="isActive"
+                  [(ngModel)]="model.isActive"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="tile-footer">
+              <button
+                class="btn btn-primary"
+                [disabled]="form.invalid"
+                (click)="save()"
+                type="button"
+                [hidden]="!isUpdateMode"
+              >
+                Save
+              </button>
+              <button
+                class="btn btn-primary"
+                [disabled]="form.invalid"
+                (click)="save()"
+                type="button"
+                [hidden]="isUpdateMode"
+              >
+                Update
+              </button>
+              <button class="btn btn-info" type="button">Back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -8,21 +8,21 @@ import { ProductGroupListComponent } from './group/list/product-group-list.compo
 import { ProductGroupEntryComponent } from './group/entry/product-group-entry.component';
 import { BrandEntryComponent } from './brand/entry/brand-entry.component';
 import { BrandListComponent } from './brand/list/brand-list.component';
-import { PaginationComponent } from '../../component/pagination/pagination.component';
+
+import { ComponentModule } from '../../component/component.module';
 
 const COMPONENTS = [
   ProductComponent,
   ProductGroupListComponent,
   ProductGroupEntryComponent,
   BrandEntryComponent,
-  BrandListComponent,
-  PaginationComponent
+  BrandListComponent
 ];
 
 const ENTRY_COMPONENTS = [];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ProductRoutingModule],
+  imports: [CommonModule, FormsModule, ProductRoutingModule, ComponentModule],
   declarations: [...COMPONENTS],
   entryComponents: [...ENTRY_COMPONENTS]
 })
