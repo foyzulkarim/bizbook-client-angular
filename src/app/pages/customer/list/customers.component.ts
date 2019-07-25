@@ -4,12 +4,11 @@ import { Router } from '@angular/router';
 import { SearchService } from '../../../services/search.service';
 import { UrlService } from '../../../services/url.service';
 
-import { Customer } from '../../../model/models';
-
 import { BaseComponent } from '../../../common/base.component';
 
 import { SaveService } from '../../../services/save.service';
 import { AuthService } from '../../../services/auth.service';
+import { Customer } from '../Model';
 
 @Component({
   selector: 'app-shop',
@@ -18,7 +17,7 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class CustomerComponent extends BaseComponent<Customer>
   implements OnInit {
-  headers = ['id', 'Name', 'Address', 'modified'];
+  headers = ['id', 'name', 'email', 'phone', 'totalDue', 'modified'];
 
   constructor(
     search: SearchService,
@@ -43,6 +42,7 @@ export class CustomerComponent extends BaseComponent<Customer>
   }
 
   gotoDetails(id: string) {
-    this.router.navigateByUrl('/pages/customer/' + id);
+    console.log(id);
+    this.router.navigateByUrl('/pages/customer/customerdetail/' + id);
   }
 }

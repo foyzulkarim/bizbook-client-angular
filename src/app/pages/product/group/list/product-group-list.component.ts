@@ -4,12 +4,11 @@ import { Router } from '@angular/router';
 import { SearchService } from '../../../../services/search.service';
 import { UrlService } from '../../../../services/url.service';
 
-import { ProductGroup } from './../../../../model/models';
-
 import { BaseComponent } from '../../../../common/base.component';
 
 import { SaveService } from '../../../../services/save.service';
 import { AuthService } from '../../../../services/auth.service';
+import { ProductGroup } from '../../Model';
 
 @Component({
   selector: 'app-brand-list',

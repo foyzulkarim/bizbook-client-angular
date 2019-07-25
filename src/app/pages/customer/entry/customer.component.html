@@ -28,7 +28,7 @@
                   class="btn btn-default pull-left"
                   (click)="getBarcode()"
                 >
-                  <span class="glyphicon glyphicon-asterisk"></span>
+                  <span class="glyphicon glyphicon-asterisk">Click</span>
                 </button>
               </div>
             </div>
@@ -204,7 +204,7 @@
                 [disabled]="form.invalid"
                 (click)="save()"
                 type="button"
-                [hidden]="!isUpdateMode"
+                [hidden]="isUpdateMode"
               >
                 Save
               </button>
@@ -213,7 +213,7 @@
                 [disabled]="form.invalid"
                 (click)="save()"
                 type="button"
-                [hidden]="isUpdateMode"
+                [hidden]="!isUpdateMode"
               >
                 Update
               </button>

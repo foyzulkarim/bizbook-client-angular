@@ -3,11 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { CustomerComponent } from './list/customers.component';
 import { CustomerEntryComponent } from './entry/customer.component';
+import { CustomerModuleComponent } from './customer.module.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: CustomerComponent,
+    component: CustomerModuleComponent,
     children: [
       {
         path: 'customerlist',

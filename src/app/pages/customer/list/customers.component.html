@@ -20,27 +20,104 @@
       <th width="1">
         #
       </th>
+      <th (click)="toggleSort('Modified'); saveOrderByValue()">
+        Created Date <span class="glyphicon glyphicon-sort"></span>
+      </th>
+      <th (click)="toggleSort('Modified'); saveOrderByValue()">
+        Modified Date <span class="glyphicon glyphicon-sort"></span>
+      </th>
       <th (click)="toggleSort('name')">
-        Name<i class="fas fa-exchange-alt fa-exchange-alt"></i>
+        Name <span class="glyphicon glyphicon-sort"></span>
       </th>
-      <th>Country</th>
-      <th>
-        Phone
+      <th class="table-icon-cell">
+        <i class="font-icon font-icon-phone"></i>
+        Phone Number
       </th>
-      <th>Modified</th>
+      <th (click)="toggleSort('totalDue')">
+        Total Amount(Total Due) <span class="glyphicon glyphicon-sort"></span>
+      </th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let shop of models; index as i" (click)="gotoDetails(shop.id)">
+    <tr *ngFor="let p of models; let i = index">
       <td>
-        {{ i + 1 }}
+        <span class="tabledit-span tabledit-identifier">
+          {{ (searchRequest.page - 1) * 10 + i + 1 }}
+        </span>
+      </td>
+      <td [ngStyle]="isOverDue(p) && { color: 'red', 'font-weight': 'bold' }">
+        {{ p.created | date }}
+        <span [hidden]="!isOverDue(p)"
+          >({{ toInt(getDateDiff(p.created)) }})</span
+        >
+      </td>
+      <td [ngStyle]="isOverDue(p) && { color: 'red', 'font-weight': 'bold' }">
+        {{ p.modified | date }}
+        <span [hidden]="!isOverDue(p)"
+          >({{ toInt(getDateDiff(p.created)) }})</span
+        >
+      </td>
+      <td class="tabledit-view-mode">
+        <span class="tabledit-span">{{ p.name }}</span>
+      </td>
+      <td class="table-icon-cell">{{ p.phone }}</td>
+      <!--<td class="color-blue-grey-lighter tabledit-view-mode"><span class="tabledit-span">{{p.district}}</span></td>-->
+      <td class="color-blue-grey-lighter tabledit-view-mode">
+        <span class="tabledit-span">{{ p.totalDue }}</span>
       </td>
       <td>
-        {{ shop.name }}
+        <label [hidden]="!p.isActive">Active</label>
+        <label [hidden]="p.isActive">Deactived</label>
+        <input type="checkbox" [(ngModel)]="p.isActive" (change)="update2(p)" />
+        <label class="label-success" [hidden]="p.message?.length <= 0"
+          >Updated</label
+        >
       </td>
-      <td>{{ shop.country }}</td>
-      <td>{{ shop.phone }}</td>
-      <td>{{ shop.modified | date }}</td>
+      <td></td>
+      <td style="white-space: nowrap; width: 1%;">
+        <div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+          <div class="btn-group btn-group-sm" style="float: none;">
+            <button
+              type="button"
+              class="tabledit-edit-button btn btn-sm btn-default"
+              style="float: none; cursor: pointer;"
+              (click)="gotoDetails(p.id)"
+            >
+              <span class="glyphicon glyphicon-edit">customeredit</span>
+            </button>
+            <button
+              type="button"
+              class="tabledit-edit-button btn btn-sm btn-default"
+              style="float: none; cursor: pointer;"
+            >
+              <span class="glyphicon glyphicon-time">customerhist</span>
+            </button>
+            <button
+              type="button"
+              class="tabledit-edit-button btn btn-sm btn-default"
+              style="float: none; cursor: pointer;"
+            >
+              <span class="glyphicon glyphicon-th">customerprodview</span>
+            </button>
+            <button
+              type="button"
+              class="btn btn-sm btn-default"
+              style="float: none; cursor: pointer;"
+            >
+              <span class="glyphicon glyphicon-home">customeraddress</span>
+            </button>
+            <button
+              type="button"
+              class="tabledit-edit-button btn btn-sm btn-default"
+              style="float: none; cursor: pointer;"
+            >
+              <span>customerprodhistory</span>
+            </button>
+          </div>
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>

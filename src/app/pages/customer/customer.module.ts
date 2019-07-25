@@ -22,4 +22,4 @@ const ENTRY_COMPONENTS = [];
   declarations: [...COMPONENTS],
   entryComponents: [...ENTRY_COMPONENTS]
 })
-export class SetupModule {}
+export class CustomersModule {}

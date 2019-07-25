@@ -2,11 +2,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SaveService } from '../../../../services/save.service';
 import { UrlService } from '../../../../services/url.service';
 
-import { Brand } from './../../../../model/models';
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '../../../../common/base.component';
 import { SearchService } from '../../../../services/search.service';
 import { AuthService } from '../../../../services/auth.service';
+import { Brand } from 'src/app/pages/shops/Model';
 
 @Component({
   selector: 'app-brand-entry',
