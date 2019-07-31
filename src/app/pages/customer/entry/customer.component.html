@@ -85,8 +85,7 @@
                   type="file"
                   class="form-control "
                   name="Image"
-                  [(ngModel)]="customerImage"
-                  custom-on-change
+                  (change)="fileChange($event.target.files, 'customerImage')"
                 />
               </div>
               <div class="col-sm-2">

@@ -9,6 +9,7 @@ import { WebService } from './web.service';
 import { AuthService } from './auth.service';
 
 import { Entity, BaseResponse } from '../model/common';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class SaveService {
@@ -66,12 +67,11 @@ export class SaveService {
   }
 
   upload(url: string, form: FormData): Observable<BaseResponse> {
+    console.log(form);
     var self = this;
-    var config = {
-      headers: { 'Content-Type': undefined }
-    };
+
     return self.webService
-      .upload(url, form, config)
+      .upload2(url, form)
       .pipe(map((res) => new BaseResponse(true, res, 'Success')));
   }
 }

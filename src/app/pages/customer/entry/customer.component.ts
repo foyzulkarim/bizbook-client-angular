@@ -2,7 +2,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SaveService } from '../../../services/save.service';
 import { UrlService } from '../../../services/url.service';
 
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectorRef,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import { BaseComponent } from '../../../common/base.component';
 import { SearchService } from '../../../services/search.service';
 import { AuthService } from '../../../services/auth.service';
@@ -11,7 +16,8 @@ import { Customer, CustomerPointViewModel } from '../Model';
 @Component({
   selector: 'app-customer-entry',
   templateUrl: './customer.component.html',
-  styleUrls: ['./customer.component.scss']
+  styleUrls: ['./customer.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CustomerEntryComponent extends BaseComponent<Customer>
   implements OnInit {
@@ -27,13 +33,16 @@ export class CustomerEntryComponent extends BaseComponent<Customer>
   customerNid2Image: any;
   customerNid2ImageUrl: any;
 
+  headers = ['id', 'name', 'email', 'phone', 'totalDue', 'modified'];
+
   constructor(
     search: SearchService,
     save: SaveService,
     authService: AuthService,
     url: UrlService,
     router: Router,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private cd: ChangeDetectorRef
   ) {
     super(
       router,
@@ -53,7 +62,9 @@ export class CustomerEntryComponent extends BaseComponent<Customer>
       this.isUpdateMode = false;
       if (params['id']) {
         this.isUpdateMode = true;
-        this.edit2(params['id']);
+        //this.edit2(params['id']);
+
+        this.editWithCallBack(params['id'], this.loadImage);
       }
     });
   }
@@ -109,14 +120,24 @@ export class CustomerEntryComponent extends BaseComponent<Customer>
 
   uploadImage(fileName: string, type: string): void {
     var self = this;
-    let file = self[fileName] as File;
+    let file = self[fileName];
+    console.log(self[fileName]);
     let folderName = 'customers';
     var fd = new FormData();
     fd.append('folderName', folderName);
     fd.append('id', self.model.id);
-    fd.append('type', type);
+    fd.append('customerImageType', type);
     fd.append('file', file);
+    console.log(fd);
+
     self.uploadContent(fd, folderName, self.model.id, type);
+  }
+
+  fileChange(files: FileList, fileName: string) {
+    var self = this;
+    if (files && files[0].size > 0) {
+      self[fileName] = files[0];
+    }
   }
 
   loadImage(model, self): void {
@@ -139,6 +160,8 @@ export class CustomerEntryComponent extends BaseComponent<Customer>
       self.model.id +
       '&name=nid2.jpeg&timestamp=' +
       random;
+
+    self.cd.detectChanges();
   }
 
   uploadContent(
@@ -148,8 +171,10 @@ export class CustomerEntryComponent extends BaseComponent<Customer>
     type: string
   ): void {
     let self = this;
+
     self.saveService.upload(self.url.uploadImage, fd).subscribe(
       (response): any => {
+        console.log(response);
         self.loadImage(self.model, self);
       },
       (error) => {

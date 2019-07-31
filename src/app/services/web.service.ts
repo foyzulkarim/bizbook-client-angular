@@ -39,6 +39,11 @@ export class WebService {
     return this.http.post(url, data, config);
   }
 
+  upload2(url: string, data: any): Observable<any> {
+    var self = this;
+    return this.http.post(url, data);
+  }
+
   private handleError(err: HttpErrorResponse): ErrorObservable<string> {
     let errorMessage: string;
     if (err.error instanceof Error) {
